@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif";
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: #fafafa;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html,body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.app-container {
+  /* display: flex;
+  flex-direction: column; */
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+h1{
+  font-size: 80px;
+  line-height: 96.88px;
+  font-family: "Cormorant SC", serif;
+}
+.pricing {
+  font-family: "Shojumaru", system-ui;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31.78px;
+}
+.heading {
+  font-family: "Francois One", sans-serif;
+  color: #4F4F4F;
+}
+.category {
+  font-family: "Coming Soon", cursive;
+
+}
+.category button {
+  width: 198px;
+  height: 60px;
+  border-radius: 16px;
+  /* color: #6A0D09; */
+  font-size: 22px;
+}
+.zobo-font {
+  font-family: "Cinzel Decorative", serif;
+}
+.zobo-gradient {
+  background: linear-gradient(270deg, #5E3C33 -10.55%, rgba(94, 60, 51, 0) 96.34%);
+}
+
+@media (max-width: 1280px) {
+  h1 {
+    font-size: 80px;
+    line-height: 76.88px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 70px;
+    line-height: 76.88px;
+  }
+}
+@media (max-width: 450px) {
+  h1 {
+    font-size: 60px;
+    line-height: 66.88px;
+  }
+}
+
