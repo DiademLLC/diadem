@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import Modal from "../components/reuseables/Modal";
 import HomeHero from "../components/HomeHero";
 import Popular from "../components/Popular";
+import Blocks from "../components/Blocks";
 import Menu from "../components/Menu";
-import Footer from "../components/Footer";
 import Zobo from "../components/Zobo";
 
 const Home = () => {
@@ -24,6 +23,7 @@ const Home = () => {
     <div className="relative">        
         <HomeHero />
         <Popular />
+        <Blocks />
         <Menu />
         <Zobo />        
     </div>

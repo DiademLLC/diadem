@@ -81,7 +81,7 @@ const Cart = () => {
                                 
                                 disabled={cartItems.length <= 0}
                                 onClick={closeCart}                            
-                                className={`${cartItems.length > 0 ? 'bg-[#f8b1aa]' : 'bg-[#f8b1aa]/40'}  text-black w-full py-2 rounded-full font-bold text-xl`}>
+                                className={`${cartItems.length > 0 ? 'bg-orange-500 text-white' : 'bg-[#f8b1aa]/40 text-black'}   w-full py-2 rounded-full font-semibold text-`}>
                                     CHECKOUT
                             </button>
                         </Link>

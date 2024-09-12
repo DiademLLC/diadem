@@ -3,22 +3,22 @@ import { useState } from 'react'
 
 const categories = [
     { name: 'all', id: 1 },
-    { name: 'category 1', id: 2 },
-    { name: 'category 2', id: 3 },
-    { name: 'category 3', id: 4 },
-    { name: 'category 4', id: 5 },
-    { name: 'category 5', id: 6 },
+    { name: 'rice', id: 2 },
+    { name: 'soups', id: 3 },
+    { name: 'snacks', id: 4 },
+    { name: 'swallow', id: 5 },
+    { name: 'combo', id: 6 },
 ]
 
 const menus = [
-    { id: 1, name: 'Fries', image: '', stars: 5, price: 10, category: 'category 1' },
-    { id: 2, name: 'Sauce', image: '', stars: 3, price: 40, category: 'category 1' },
-    { id: 3, name: 'Snack', image: '', stars: 5, price: 60, category: 'category 2' },
-    { id: 4, name: 'Platter', image: '', stars: 4, price: 70, category: 'category 2' },
-    { id: 5, name: 'Fries', image: '', stars: 5, price: 10, category: 'category 3' },
-    { id: 6, name: 'Sauce', image: '', stars: 3, price: 40, category: 'category 3' },
-    { id: 7, name: 'Snack', image: '', stars: 5, price: 60, category: 'category 4' },
-    { id: 8, name: 'Platter', image: '', stars: 4, price: 70, category: 'category 5' },
+    { id: 1, name: 'Fries', image: '', stars: 5, price: 10, category: 'rice' },
+    { id: 2, name: 'Sauce', image: '', stars: 3, price: 40, category: 'rice' },
+    { id: 3, name: 'Snack', image: '', stars: 5, price: 60, category: 'soups' },
+    { id: 4, name: 'Platter', image: '', stars: 4, price: 70, category: 'soups' },
+    { id: 5, name: 'Fries', image: '', stars: 5, price: 10, category: 'snacks' },
+    { id: 6, name: 'Sauce', image: '', stars: 3, price: 40, category: 'snacks' },
+    { id: 7, name: 'Snack', image: '', stars: 5, price: 60, category: 'swallow' },
+    { id: 8, name: 'Platter', image: '', stars: 4, price: 70, category: 'combo' },
 ]
 
 const Menu = () => {
@@ -73,7 +73,7 @@ const Menu = () => {
                             <button
                                 onClick={() => handleChangeCategory(category.id)}
                                 key={category.id}
-                                className={`${activeBtn === category.id ? 'bg-[#6A0D09] text-white ' : 'bg-white text-[#6A0D09]'
+                                className={`${activeBtn === category.id ? 'bg-orange-500/80 text-white ' : 'bg-white text-black'
                                     } capitalize shadow-xl p-2`}
                             >
                                 {category.name}
@@ -94,7 +94,7 @@ const Menu = () => {
                     {/* Only show "Load More" btn if there are more items to display */}
                     <div className='text-center'>
                         {itemsToShow < foods.length && (
-                            <button onClick={handleLoadMore} className="mt-4 px-4 py-2 bg-[#6A0D09] text-white rounded">
+                            <button onClick={handleLoadMore} className="mt-3 px-4 py-2 bg-orange-600/80 text-white rounded-lg">
                                 Load More
                             </button>
                         )}

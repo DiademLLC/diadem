@@ -8,16 +8,6 @@ const Modal = () => {
     const { closeModal, isModalOpen, modalContent } = useContext(ModalContext)
     const { addItemToCart, isLoading, cartItems, updateItemQuantity, openCart, cart } = useContext(CartContext);
 
-    // const handleAddItem = (priceId) => {
-    //     const priceObject = modalContent.prices.find((item) => item.id === priceId);
-    //     if (!priceObject) {
-    //         console.error("Price not found in modal content");
-    //         return;
-    //     }
-
-    //     addItemToCart(modalContent, 1, priceId);
-    // }
-
     // Function to handle click outside the modal
     const handleOverlayClick = (e) => {
         // Check if the click is outside the modal content

@@ -91,17 +91,17 @@ const Navbar = () => {
     };
 
     return (
-        <header className='max-w-[1440px] mx-auto relative'>
-            <nav className='flex sticky items-center justify-between h-16 lg:h-[100px] xl:h-[121px] mx-5 lg:20 xl:mx-40'>
+        <header className='max-w-[1440px] mx-auto relative bg-orange-600/90 z-50'>
+            <nav className='flex sticky items-center justify-between h-14 lg:h-[80px] xl:h-[90px] mx-5 lg:mx-10'> {/*mx-24*/}
                 <div className='h-10 w-10 lg:h-20 lg:w-20'>
                     <img className='h-full w-full object-cover' src="/images/logo.png" alt="diadem logo" />
                 </div>
 
-                <div className='hidden lg:flex justify-between w-[617px]'>
+                <div className='hidden lg:flex gap-10 text-white'>
                     {navLinks.map((link, index) => {
                         return (
                             <Link 
-                                className='text-2xl font-medium'
+                                className='text-xl font-medium'
                                 to={link.link} 
                                 key={index}>
                                     {link.name}
@@ -111,9 +111,9 @@ const Navbar = () => {
                 </div>
 
                 <button className='hidden lg:block relative' onClick={openCart}>
-                    <IoMdCart className='text-4xl' />
+                    <IoMdCart className='text-4xl text-white' />
                     {cartItems.length > 0 && 
-                        <p className="absolute -right-[0.85rem] -top-[0.45rem] text-[0.8rem] font-medium bg-black text-white w-4 h-4 rounded-full">
+                        <p className="absolute -right-[0.85rem] -top-[0.45rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
                             {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
                         </p>
                     }
@@ -121,9 +121,9 @@ const Navbar = () => {
 
                 <div className='flex items-center lg:hidden gap-4 '>
                     <button className='relative' onClick={openCart}>
-                        <IoMdCart className='text-4xl' />
+                        <IoMdCart className='text-3xl text-white' />
                         {cartItems.length > 0 && 
-                            <p className="flex items-center justify-center absolute -right-[0.85rem] -top-[0.35rem] text-[0.8rem] font-medium bg-black text-white w-4 h-4 rounded-full">
+                            <p className="flex items-center justify-center absolute -right-[0.85rem] -top-[0.35rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
                             {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
                             </p>
                         }
@@ -157,7 +157,7 @@ const Navbar = () => {
                                         x: "-50%",
                                         y: "-50%"
                                     }}
-                                    className="absolute h-1 w-8 bg-black"></motion.span>
+                                    className="absolute h-1 w-8 bg-white"></motion.span>
 
                                 <motion.span 
                                     variants={{
@@ -173,7 +173,7 @@ const Navbar = () => {
                                         x: "-50%",
                                         y: "-50%"
                                     }}
-                                    className="absolute h-1 w-8 bg-black">
+                                    className="absolute h-1 w-8 bg-white">
                                 </motion.span>
                                 
                                 <motion.span 
@@ -195,13 +195,13 @@ const Navbar = () => {
                                         x: "0%",
                                         y: "50%"
                                     }}
-                                    className="absolute h-1 w-4 bg-black"></motion.span>
+                                    className="absolute h-1 w-4 bg-white"></motion.span>
                             </motion.button>
                         </MotionConfig>
                     </div>
                 </div>
             </nav>
-            <div className='w-full h-[2px] bg-black'></div>
+            {/* <div className='w-full h-[2px] bg-black'></div> */}
 
             <AnimatePresence >
                 {isOpen && 

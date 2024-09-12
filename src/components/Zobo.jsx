@@ -2,8 +2,10 @@ import React from 'react'
 
 const Zobo = () => {
   return (
-    <section className=' bg-[#B71058]'>
-        <div className='flex flex-col lg:flex-row relative max-w-[1440px] mx-auto'>
+    <section className=' bg-[#B71058] relative'>
+        <div className="bg-[rgba(0,0,0,0.4)] w-full h-full absolute top-0 inset-0 z-10 "></div>
+        
+        <div className='flex flex-col lg:flex-row relative max-w-[1440px] mx-auto'>            
             <div className='flex relative lg:w-[55%]'>
                 <img className='relative z-0 w-full  object-contain' src="/images/zobo-image.png" alt="zobo image" />
             </div>

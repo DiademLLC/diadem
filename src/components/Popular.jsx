@@ -70,7 +70,7 @@ const Popular = () => {
     return (
         <section className="bg-gradient-to-t from-gray-100 to-gray-50 px-5 py-10 lg:px-24 lg:py-20">
             <div className="space-y-6 max-w-[1440px] mx-auto">
-                <h2 className="heading text-3xl lg:text-5xl">Our Popular Dishes</h2>
+                {/* <h2 className="heading text-3xl lg:text-5xl">Our Popular Dishes</h2> */}
 
                 {/* Slider Component */}
                 <Slider {...settings} >
