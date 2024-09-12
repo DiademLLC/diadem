@@ -25,7 +25,7 @@ const Zobo = () => {
                                 Experience the authentic taste of Africa with our refreshing Zobo drink. Made from natural hibiscus leaves, our Zobo is packed with bold flavors, vibrant colors, and a burst of health benefits. Whether you enjoy it chilled or with a twist of ginger or pineapple, every sip brings you closer to the heart of African tradition. Taste the difference. Feel the freshness.
                             </p>
 
-                            <div className='flex flex-wrap gap-2 uppercase'>
+                            <div className='flex flex-wrap gap-2 uppercase text-sm md:text-base'>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> 1 Litre </div>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> alc 0% </div>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> 100% natural </div>
@@ -33,8 +33,8 @@ const Zobo = () => {
                         </div>
 
                         <div className='flex flex-wrap gap-2 lg:gap-5'>
-                            <button className='bg-white text-[#5E3C33] px-3 lg:px-5 py-1 lg:py-3 rounded-full text-2xl font-semibold uppercase'>order now</button>
-                            <button className='bg-transparent border border-white text-white px-3 lg:px-5 py-1 lg:py-3 rounded-full text-2xl font-semibold uppercase'>add to cart</button>
+                            <button className='bg-white text-[#5E3C33] px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>order now</button>
+                            <button className='bg-transparent border border-white text-white px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>add to cart</button>
                         </div>
                     </div>
                     

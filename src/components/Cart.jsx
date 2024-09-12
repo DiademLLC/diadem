@@ -17,7 +17,7 @@ const Cart = () => {
             <div className='flex flex-col h-full'>
                 <div className='bg-black/90 text-white p-4'>
                     <button className='uppercase flex items-center gap-1' onClick={closeCart}>
-                        <FaLessThan />
+                        <FaLessThan className='text-orange-500' />
                         Continue shopping
                     </button>
                 </div>
@@ -81,7 +81,7 @@ const Cart = () => {
                                 
                                 disabled={cartItems.length <= 0}
                                 onClick={closeCart}                            
-                                className={`${cartItems.length > 0 ? 'bg-orange-500 text-white' : 'bg-[#f8b1aa]/40 text-black'}   w-full py-2 rounded-full font-semibold text-`}>
+                                className={`${cartItems.length > 0 ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-[#f8b1aa]/40 text-black'}   w-full py-2 rounded-full font-semibold text-`}>
                                     CHECKOUT
                             </button>
                         </Link>
