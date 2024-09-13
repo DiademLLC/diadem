@@ -2,10 +2,10 @@ import React from 'react'
 
 const Blocks = () => {
   return (
-    <section className='h-full  overflow-hidden bg-gray-100 py-10'>
+    <section className='h-[250px] md:h-full overflow-hidden bg-gray-100 py-10 mx-5 md:mx-0'>
         <div className='flex gap-1 max-w-[1440px] mx-auto'>
-            <div className='relative w-1/2'>
-                <img className='object-cover w-full f-full' src="/images/rice1.png" alt="" />
+            <div className='relative w-1/2 h-[250px] md:h-full'>
+                <img className='object-cover w-full h-full' src="/images/rice1.png" alt="" />
                 <div className="bg-[rgba(0,0,0,0.4)] w-full h-full absolute top-0 inset-0 z-10 "></div>
 
                 <div className='absolute inset-0 flex flex-col justify-start p-4 sm:p-8 md:p-14  z-20 text-white sm:space-y-2 md:space-y-5'>

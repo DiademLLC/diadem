@@ -1,15 +1,19 @@
 import { FaOpencart, FaPlus, FaMinus } from "react-icons/fa"
 import { FaXmark } from "react-icons/fa6";
 import { CartContext } from "../context/CartContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useOrderContext } from "../context/OrderContext";
+
 
 const CheckoutCard = () => {
+    const { orderPlaced, setOrderPlaced, orderDetails, setOrderDetails } = useOrderContext();
     const { cartItems, subTotal, updateItemQuantity, removeItemFromCart } = useContext(CartContext);
     const [isLoading, setIsLoading] = useState(false)
-    const [orderPlaced, setOrderPlaced] = useState(false);
+    // const [orderPlaced, setOrderPlaced] = useState(false);
+    // const [orderDetails, setOrderDetails] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,7 +21,24 @@ const CheckoutCard = () => {
         address: '',
         note: ''
     });
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const validateForm = (email, phoneNumber) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[0-9]{10,15}$/;
+      
+        if (!emailRegex.test(email)) {
+          alert('Invalid email format');
+          return false;
+        }
+      
+        if (!phoneRegex.test(phoneNumber)) {
+          alert('Invalid phone number format');
+          return false;
+        }
+      
+        return true;
+    };
 
     const handleChange = (e) => {
         const {name, value}  = e.target
@@ -33,13 +54,28 @@ const CheckoutCard = () => {
         e.preventDefault()
         setIsLoading(true)
         try {
+            if (!validateForm(formData.email, formData.number)) {
+                return;
+            }
+            
             // const response = await axios.post('http://localhost:3000/order', formData)
-            const response = true
+            const response = {
+                data: {
+                    success: true,
+                    order: {
+                        id: 12345,
+                        name: formData.name
+                    }
+                }
+            }
 
-            if (response) { //response.data.success
-                // setOrderPlaced(true)
+            if (response.data.success) { //response.data.success
+                // return alert(response.data.success)
+                setOrderPlaced(true)
+                setOrderDetails(response.data.order);
                 navigate('/order-complete')
                 toast.success('order successfully made')
+                return console.log('response console:',orderPlaced)
             } else {
                 toast.error('Error making order. Try again')
             }
@@ -49,6 +85,9 @@ const CheckoutCard = () => {
             setIsLoading(false)
         }
     }
+    // useEffect(()=> {
+    //     console.log('useEffect console:',orderPlaced)
+    // }, [handleSubmit])
     return (
         <div className='bg-gray-100 max-w-[500px] rounded-lg overflow-hidden shadow-2xl'>
             <div className="flex flex-col items-center mb-8 mt-3 text-orange-600">
@@ -111,9 +150,9 @@ const CheckoutCard = () => {
                         </div>
                     </div>
 
-                    <div className="bg-white shadow mx-6 mb-4">
+                    <div className="bg-white shadow ">
                         <form action="" onSubmit={handleSubmit}>
-                            <div className="space-y-2 p-6">
+                            <div className="space-y-2 p-6 mx-6 ">
                                 <div>
                                     <h2 className="text-center">Fill in your delivery details</h2>
                                 </div>
@@ -174,7 +213,7 @@ const CheckoutCard = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="bg-blue-900 text-white text-center">
+                            <div className="bg-blue-900 text-white text-center rounded-b-lg">
                                 {isLoading ? 
                                         <p className='py-4'>
                                             Order processing... Please wait
@@ -192,7 +231,6 @@ const CheckoutCard = () => {
                     <p><Link to='/#menu' className='text-orange-600'>start shopping</Link> for your delicious meals</p>
                 </div>
             }
-
         </div>
     )
 }

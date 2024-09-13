@@ -1,16 +1,44 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { CartContext } from '../context/CartContext';
+import { useOrderContext } from "../context/OrderContext";
 import { useNavigate } from 'react-router-dom';
 
 const OrderCompletionPage = () => {
+    const { orderPlaced, setOrderPlaced, orderDetails } = useOrderContext();
     const { cartItems } = useContext(CartContext);
     const navigate = useNavigate();
+    const isMountedRef = useRef(true);
+
+    useEffect(() => {
+        if (!orderPlaced) {
+          navigate('/'); // Redirect if the order has not been placed
+        }
+    }, [orderPlaced, navigate]);
+
+    // Cleanup to reset the orderPlaced state when leaving the page
+    useEffect(() => {
+        return () => {
+        if (isMountedRef.current) {
+            // Check if the component is currently mounted before setting to false
+            setOrderPlaced(false); // Reset the order status only when leaving the page
+        }
+        };
+    }, [setOrderPlaced]);
+
+    // Set the ref to false once the component has mounted
+    useEffect(() => {
+        isMountedRef.current = false; // Component is mounted now, no longer in initial mount
+    }, []);
+    
+    if (!orderPlaced) return null;
+    console.log('order placed on complete:', orderPlaced)
 
     // Calculate total amount
     const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow-lg my-10">
+            <h1 className="text-2xl font-bold mb-4">{orderDetails.id} {orderDetails.name}</h1>
             <h1 className="text-2xl font-bold mb-4">Order Completed Successfully!</h1>
             <p className="mb-6">Thank you for your order. Here are your order details:</p>
 
