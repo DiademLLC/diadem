@@ -91,117 +91,118 @@ const Navbar = () => {
     };
 
     return (
-        <header className='max-w-[1440px] mx-auto relative bg-orange-600/90 z-50'>
-            <nav className='flex sticky items-center justify-between h-14 lg:h-[80px] xl:h-[90px] mx-5 lg:mx-10'> {/*mx-24*/}
-                <div className='h-10 w-10 lg:h-20 lg:w-20'>
-                    <img className='h-full w-full object-cover' src="/images/logo.png" alt="diadem logo" />
-                </div>
+        <header className=' relative bg-orange-600/90 z-50'>
+            <div className='max-w-[1440px] mx-auto'>
+                <nav className='flex sticky items-center justify-between h-14 lg:h-[80px] xl:h-[90px] mx-5 lg:mx-10'> {/*mx-24*/}
+                    <div className='h-10 w-10 lg:h-20 lg:w-20'>
+                        <img className='h-full w-full object-cover' src="/images/logo.png" alt="diadem logo" />
+                    </div>
 
-                <div className='hidden lg:flex gap-10 text-white'>
-                    {navLinks.map((link, index) => {
-                        return (
-                            <Link 
-                                className='text-xl font-medium'
-                                to={link.link} 
-                                key={index}>
-                                    {link.name}
-                            </Link>
-                        )
-                    })}
-                </div>
+                    <div className='hidden lg:flex gap-10 text-white'>
+                        {navLinks.map((link, index) => {
+                            return (
+                                <Link 
+                                    className='text-xl font-medium'
+                                    to={link.link} 
+                                    key={index}>
+                                        {link.name}
+                                </Link>
+                            )
+                        })}
+                    </div>
 
-                <button className='hidden lg:block relative' onClick={openCart}>
-                    <IoMdCart className='text-4xl text-white' />
-                    {cartItems.length > 0 && 
-                        <p className="absolute -right-[0.85rem] -top-[0.45rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
-                            {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
-                        </p>
-                    }
-                </button>
-
-                <div className='flex items-center lg:hidden gap-4 '>
-                    <button className='relative' onClick={openCart}>
-                        <IoMdCart className='text-3xl text-white' />
+                    <button className='hidden lg:block relative' onClick={openCart}>
+                        <IoMdCart className='text-4xl text-white' />
                         {cartItems.length > 0 && 
-                            <p className="flex items-center justify-center absolute -right-[0.85rem] -top-[0.35rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
-                            {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
+                            <p className="absolute -right-[0.85rem] -top-[0.45rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
+                                {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
                             </p>
                         }
                     </button>
 
-                    <div className="flex items-center lg:hidden">
-                        <MotionConfig 
-                            transition={{
-                                duration: 0.5,
-                                ease:'easeInOut'
-                            }}
-                        >
-                            <motion.button
-                                onClick={() =>  setIsOpen((prevIsOpen) => !prevIsOpen) }
-                                initial= {false}
-                                animate={ isOpen ? 'open' : 'closed' }
-                                className="h-10 w-10 rounded-full bg-white/0 transition-colors hover:bg-white/20">
-                                <motion.span 
-                                    variants={{
-                                        open: {
-                                            rotate: ["0deg", "0deg", "45deg"],
-                                            top: ["35%", "50%", "50%"],
-                                        },
-                                        closed: {
-                                            rotate: ["45deg", "0deg", "0deg"],
-                                            top: ["50%", "50%", "35%"]
-                                        }
-                                    }}
-                                    style={{
-                                        top: "35%",
-                                        x: "-50%",
-                                        y: "-50%"
-                                    }}
-                                    className="absolute h-1 w-8 bg-white"></motion.span>
+                    <div className='flex items-center lg:hidden gap-4 '>
+                        <button className='relative' onClick={openCart}>
+                            <IoMdCart className='text-3xl text-white' />
+                            {cartItems.length > 0 && 
+                                <p className="flex items-center justify-center absolute -right-[0.85rem] -top-[0.35rem] text-[0.8rem] font-medium bg-white text-black w-4 h-4 rounded-full">
+                                {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
+                                </p>
+                            }
+                        </button>
 
-                                <motion.span 
-                                    variants={{
-                                        open: {
-                                            rotate: ["0deg", "0deg", "-45deg"],
-                                        },
-                                        closed: {
-                                            rotate: ["-45deg", "0deg", "0deg"],
-                                        }
-                                    }}
-                                    style={{
-                                        top: "50%",
-                                        x: "-50%",
-                                        y: "-50%"
-                                    }}
-                                    className="absolute h-1 w-8 bg-white">
-                                </motion.span>
-                                
-                                <motion.span 
-                                    variants={{
-                                        open: {
-                                            rotate: ["0deg", "0deg", "45deg"],
-                                            bottom: ["35%", "50%", "50%"],
-                                            x: ["0%", "-50%"]
-                                        },
-                                        closed: {
-                                            rotate: ["45deg", "0deg", "0deg"],
-                                            bottom: ["50%", "50%", "35%"],
-                                            x: ["-50%", "0%"]
-                                        }
-                                    }}
+                        <div className="flex items-center lg:hidden">
+                            <MotionConfig 
+                                transition={{
+                                    duration: 0.5,
+                                    ease:'easeInOut'
+                                }}
+                            >
+                                <motion.button
+                                    onClick={() =>  setIsOpen((prevIsOpen) => !prevIsOpen) }
+                                    initial= {false}
+                                    animate={ isOpen ? 'open' : 'closed' }
+                                    className="h-10 w-10 rounded-full bg-white/0 transition-colors hover:bg-white/20">
+                                    <motion.span 
+                                        variants={{
+                                            open: {
+                                                rotate: ["0deg", "0deg", "45deg"],
+                                                top: ["35%", "50%", "50%"],
+                                            },
+                                            closed: {
+                                                rotate: ["45deg", "0deg", "0deg"],
+                                                top: ["50%", "50%", "35%"]
+                                            }
+                                        }}
+                                        style={{
+                                            top: "35%",
+                                            x: "-50%",
+                                            y: "-50%"
+                                        }}
+                                        className="absolute h-1 w-8 bg-white"></motion.span>
 
-                                    style={{
-                                        bottom: "35%",
-                                        x: "0%",
-                                        y: "50%"
-                                    }}
-                                    className="absolute h-1 w-4 bg-white"></motion.span>
-                            </motion.button>
-                        </MotionConfig>
+                                    <motion.span 
+                                        variants={{
+                                            open: {
+                                                rotate: ["0deg", "0deg", "-45deg"],
+                                            },
+                                            closed: {
+                                                rotate: ["-45deg", "0deg", "0deg"],
+                                            }
+                                        }}
+                                        style={{
+                                            top: "50%",
+                                            x: "-50%",
+                                            y: "-50%"
+                                        }}
+                                        className="absolute h-1 w-8 bg-white">
+                                    </motion.span>
+                                    
+                                    <motion.span 
+                                        variants={{
+                                            open: {
+                                                rotate: ["0deg", "0deg", "45deg"],
+                                                bottom: ["35%", "50%", "50%"],
+                                                x: ["0%", "-50%"]
+                                            },
+                                            closed: {
+                                                rotate: ["45deg", "0deg", "0deg"],
+                                                bottom: ["50%", "50%", "35%"],
+                                                x: ["-50%", "0%"]
+                                            }
+                                        }}
+
+                                        style={{
+                                            bottom: "35%",
+                                            x: "0%",
+                                            y: "50%"
+                                        }}
+                                        className="absolute h-1 w-4 bg-white"></motion.span>
+                                </motion.button>
+                            </MotionConfig>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            {/* <div className='w-full h-[2px] bg-black'></div> */}
+                </nav>
+            </div>
 
             <AnimatePresence >
                 {isOpen && 

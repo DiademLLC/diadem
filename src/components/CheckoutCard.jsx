@@ -57,17 +57,23 @@ const CheckoutCard = () => {
             if (!validateForm(formData.email, formData.number)) {
                 return;
             }
+
+            const orderData = {
+                ...formData,      // Form fields: name, email, phone etc
+                cartItems,        // Add cart items to the order data
+            };
             
-            // const response = await axios.post('http://localhost:3000/order', formData)
-            const response = {
-                data: {
-                    success: true,
-                    order: {
-                        id: 12345,
-                        name: formData.name
-                    }
-                }
-            }
+            const response = await axios.post('http://localhost:3000/order', orderData)
+            return console.log('response from backend:', response)
+            // const response = {
+            //     data: {
+            //         success: true,
+            //         order: {
+            //             id: 12345,
+            //             name: formData.name
+            //         }
+            //     }
+            // }
 
             if (response.data.success) { //response.data.success
                 // return alert(response.data.success)
