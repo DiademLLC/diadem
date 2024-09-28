@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { useAuth } from "./AuthContext";
 
 const AdminContext = createContext();
 
@@ -8,6 +9,7 @@ export const useAdmin = () => {
 };
 
 export const AdminProvider = ({ children }) => {
+    const { user } = useAuth()
     const [menuItems, setMenuItems] = useState([]);
     const [orders, setOrders] = useState([]);
     const [contacts, setContacts] = useState([]);
@@ -42,7 +44,10 @@ export const AdminProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        fetchApi();
+        if(user) {
+            console.log('user on admin context fetch api:', user)
+            fetchApi();
+        }     
     }, []);
 
 
