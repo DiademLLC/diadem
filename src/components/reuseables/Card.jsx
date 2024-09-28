@@ -7,12 +7,12 @@ const Card = ({product, cardType}) => {
     const {openModal} = useContext(ModalContext);
 
     const handleOpenModal= () => {
-        openModal(product.id)
+        openModal(product._id)
     }
   return (
     <div className='bg-white rounded-[10px]  flex-grow flex flex-col overflow-hidden shadow-lg'>
         <div className="">
-            <img className="w-full object-cover" src="/images/pic.png" alt="" />
+            <img className="w-full h-52 object-cover" src={product.image} alt="" /> {/*adjust height for img card*/}
         </div>
 
         <div className={`${cardType === 'menu' && 'bg-white'} p-3`}>

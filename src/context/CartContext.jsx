@@ -18,7 +18,6 @@ export const CartProvider = ({children}) => {
 
     const [subTotal, setSubTotal] = useState(0);
     const [isLoading, setIsLoading] = useState(false)
-    const [isAdded, setIsAdded]= useState(false)
 
     const openCart = () => setCart(true);
     const closeCart = () => setCart(false);
@@ -35,72 +34,45 @@ export const CartProvider = ({children}) => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
 
-    const addItemToCart1 = (product, quantity, priceId) => {
-        // return alert(priceId)
-        setIsLoading(true)
-        const existingItem = cartItems.find(item => item.id === product.id)
-        const price = product.prices.find((price)=> price.id === priceId)
-
-        // const doubleCheck = existingItem.type === price.name
-
-        // return console.log('doubleCheck:', doubleCheck)
-
-        if (existingItem) {
-            // console.log('existingItem in cart:', existingItem)
-            const doubleCheck = existingItem.type === price.name
-
-            
-            // return console.log('cartItems:', cartItems)
-            if(doubleCheck) {
-                console.log('doubleCheck block')
-                setCartItems((prevItems) => {
-                    return console.log('prevItems:', prevItems)
-                    prevItems.map((item) => 
-                        item.id === product.id ? {...item, quantity: item.quantity + quantity} : item
-                    );
-                })
-            }
-            
-            // else{
-            //     setCartItems((prevItems) => {
-            //         prevItems.map((item) => 
-            //             item.id === product.id ? {...item, quantity: item.quantity + quantity} : item
-            //         );
-            //     })
-            // }
-            
-        } else {
-            setCartItems((prevItems) => [
-                ...prevItems,
-                {...product, quantity, price:price.price, type: price.name}
-            ]);
-        }
-        toast.success('successfully added item to your cart')
-
-        // setTimeout(() => {
-        //     setIsLoading(false)
-        //     setIsAdded(true)
-        // }, 500)
-    }
-
-    //add to cart works
+    //add to cart 
     const addItemToCart = (product, quantity, priceId) => {
+        // return console.log('product:', product)
         setIsLoading(true);
 
         // Find the existing item in the cart
-        const existingItem = cartItems.filter(item => item.id === product.id);
+        const existingItem = cartItems.filter(item => item._id === product._id);
+    
+
+        if (product.name === 'zobo') {
+            const zoboType = existingItem.find(item => item._id === product._id);
+            if(zoboType){
+                setCartItems(prevItems => 
+                    prevItems.map(item => 
+                        item._id === product._id ? { ...item, quantity: item.quantity + quantity } : item
+                    )
+                );
+            } else {
+                setCartItems(prevItems => [
+                    ...prevItems,
+                    { ...product, quantity, price: product.price, type: product.type }
+                ]);               
+            }        
+            toast.success('Item added to your cart')
+            setIsLoading(false);    
+            return;
+        } 
 
         // Find the price based on priceId
-        const price = product.prices.find(price => price.id === priceId);
+        const price = product.prices.find(price => price._id === priceId);
 
         //check if type and id matches
-        const isSameType = existingItem.find(item => item.type === price.name) ;
+        const isSameType = existingItem.find(item => item.type === price.name);
 
         if (isSameType) {
             // Update the quantity if the type matches
             setCartItems(prevItems => 
                 prevItems.map(item => 
-                    item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
+                    item._id === product._id ? { ...item, quantity: item.quantity + quantity } : item
                 )
             );
         } else {
@@ -111,16 +83,11 @@ export const CartProvider = ({children}) => {
             ]);
         }
         
-        toast.success('successfully added item to your cart')
+        toast.success('Item added to your cart')
         setIsLoading(false); 
     };
 
-
-    const clearNotification = () => {
-        setIsAdded(false)
-    }
-
-    //update on cart works
+    //update on cart 
     const updateItemQuantity = (id, type, newQuantity) => {
         setIsLoading(true); 
 
@@ -135,7 +102,7 @@ export const CartProvider = ({children}) => {
     
             return prevItems.map((item) => {
                 // If the item matches both id and type, update the quantity
-                if (item.id === id && item.type === type) {
+                if (item._id === id && item.type === type) {
                     return { ...item, quantity: newQuantity };
                 }
                 // Otherwise, return the item unchanged
@@ -147,24 +114,23 @@ export const CartProvider = ({children}) => {
 
     const removeItemFromCart = (itemId, type) => {
         // return localStorage.removeItem('cartItems');
-
+        // console.log('itemId:', itemId)
         const item = cartItems.find((item)=> 
-            item.id === itemId && item.type === type
+            item._id === itemId && item.type === type
         )
 
         if (item) {
-            // console.log('itemId exists')
             setCartItems((prevItems) => 
                 prevItems.filter((item)=> 
-                     !(item.type === type && item.id === itemId)
+                     !(item.type === type && item._id === itemId)
                 )
             )
-            toast.success('successfully removed item from your cart')
+            toast.success('Item removed from your cart')
         }
     }
 
     return (
-        <CartContext.Provider value={{ cart, openCart, closeCart, cartItems, subTotal, isLoading, addItemToCart, updateItemQuantity, removeItemFromCart, isAdded, clearNotification}}>
+        <CartContext.Provider value={{ cart, openCart, closeCart, cartItems, subTotal, isLoading, addItemToCart, updateItemQuantity, removeItemFromCart}}>
             {children}
         </CartContext.Provider>
     )

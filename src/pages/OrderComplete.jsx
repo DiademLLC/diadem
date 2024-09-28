@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const OrderCompletionPage = () => {
     const { orderPlaced, setOrderPlaced, orderDetails } = useOrderContext();
-    const { cartItems } = useContext(CartContext);
     const navigate = useNavigate();
     const isMountedRef = useRef(true);
 
@@ -34,20 +33,21 @@ const OrderCompletionPage = () => {
     console.log('order placed on complete:', orderPlaced)
 
     // Calculate total amount
-    const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    // const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow-lg my-10">
-            <h1 className="text-2xl font-bold mb-4">{orderDetails.id} {orderDetails.name}</h1>
+            {/* <h1 className="text-2xl font-bold mb-4">{orderDetails.id} {orderDetails.name}</h1> */}
             <h1 className="text-2xl font-bold mb-4">Order Completed Successfully!</h1>
             <p className="mb-6">Thank you for your order. Here are your order details:</p>
+            <p className="mb-4">Order Ref: {orderDetails.orderRef}</p>
 
             <div className="space-y-4">
-                {cartItems.map((item, index) => (
+                {orderDetails.cartItems.map((item, index) => (
                     <div key={index} className="flex items-center justify-between border-b pb-4 mb-4">
                         <div className="flex items-center gap-4">
                             <img
-                                src={`/images/${item.image}`}
+                                src={item.image}
                                 alt={item.name}
                                 className="w-16 h-16 rounded-full object-cover"
                             />
@@ -66,7 +66,7 @@ const OrderCompletionPage = () => {
 
             <div className="flex justify-between items-center border-t pt-4 mt-4">
                 <h3 className="text-lg font-bold">Total Amount</h3>
-                <p className="text-lg font-bold">${totalAmount.toFixed(2)}</p>
+                <p className="text-lg font-bold">${orderDetails.totalAmount.toFixed(2)}</p>
             </div>
 
             <button className="mt-6 w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600 transition duration-200">

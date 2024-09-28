@@ -17,10 +17,10 @@ const Modal = () => {
     };
 
     const handleItem = (priceId, change) => {
-        const priceObject = modalContent.prices.find((item) => item.id === priceId);
+        const priceObject = modalContent.prices.find((item) => item._id === priceId);
 
         const cartItem = cartItems.find(
-            (item) => item.type === priceObject.name && item.id === modalContent.id
+            (item) => item.type === priceObject.name && item._id === modalContent._id
         );
         // console.log('cartItem:', cartItems)
         if (!cartItem && change === 1) {
@@ -31,7 +31,7 @@ const Modal = () => {
         const currentQuantity = cartItem.quantity
         const currentType = cartItem.type
 
-        updateItemQuantity(cartItem.id, currentType, (currentQuantity + change))
+        updateItemQuantity(cartItem._id, currentType, (currentQuantity + change))
     }
 
     const handleOpenCart = () => {
@@ -66,7 +66,7 @@ const Modal = () => {
                     <div className="space-y-2">
                         {modalContent.prices.map((price, index) => {
 
-                            const cartItem = cartItems.find(item => item.type === price.name && item.id === modalContent.id);
+                            const cartItem = cartItems.find(item => item.type === price.name && item._id === modalContent._id);
 
                             const currentQuantity = cartItem ? cartItem.quantity : 0;
 
@@ -79,13 +79,13 @@ const Modal = () => {
 
                                     <div className="flex gap-4 items-center">
                                         <div
-                                            onClick={() => handleItem(price.id, - 1)}
+                                            onClick={() => handleItem(price._id, - 1)}
                                             className="w-8 h-8 bg-orange-300 rounded flex items-center justify-center text-white cursor-pointer">
                                             <FaMinus />
                                         </div>
                                         {isLoading ? <p>...</p> : <p>{currentQuantity}</p>}
                                         <div
-                                            onClick={() => handleItem(price.id, + 1)}
+                                            onClick={() => handleItem(price._id, + 1)}
                                             className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center text-white cursor-pointer"
                                         >
                                             <FaPlus />
@@ -113,66 +113,6 @@ const Modal = () => {
                 </div>
             </div>
         }</div>
-        // <div className="bg-black/60 h-full w-full fixed top-0 left-0 z-40 flex justify-center items-end md:items-center">
-        //     <div className="bg-white  md:rounded-2xl w-full md:max-w-[500px] md:w-[500px] p-5 space-y-5">
-        //         <div className="flex justify-between items-center">
-        //             <h3 className="text-2xl">Please select a variation</h3>
-        //             <button onClick={closeModal}>
-        //                 <FaXmark className="text-2xl text-gray-500" />
-        //             </button>
-        //         </div>
-
-        //         <div className="space-y-2">
-        //             {modalContent.prices.map((price, index) => {
-
-        //                 const cartItem = cartItems.find(item => item.type === price.name && item.id === modalContent.id);
-
-        //                 const currentQuantity = cartItem ? cartItem.quantity : 0;
-
-        //                 return (
-        //                     <div key={index} className="flex justify-between">
-        //                         <div>
-        //                             <h3>{price.name}</h3>
-        //                             <p>${price.price}</p>
-        //                         </div>
-
-        //                         <div className="flex gap-4 items-center">
-        //                             <div 
-        //                                 onClick={() => handleRemoveItem(price.id)}
-        //                                 className="w-8 h-8 bg-orange-300 rounded flex items-center justify-center text-white cursor-pointer">
-        //                                 <FaMinus />
-        //                             </div>
-        //                             {isLoading ? <p>...</p> : <p>{currentQuantity}</p>}
-        //                                 {/* <p>...</p> */}
-        //                             <div
-        //                                 onClick={() => handleAddItem(price.id)}
-        //                                 className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center text-white cursor-pointer"
-        //                             >
-        //                                 <FaPlus />
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 );
-        //             })}
-        //         </div>
-
-        //         <div className="flex flex-col gap-2 uppercase">
-        //             <button
-        //                 onClick={handleOpenCart}
-        //                 className="w-full bg-orange-400 text-white rounded py-2 uppercase font-medium"
-        //             >
-        //                 View cart and checkout
-        //             </button>
-        //             <button
-        //                 onClick={closeModal}
-        //                 className="w-full border border-orange-400 text-orange-400 rounded py-2 uppercase font-medium"
-        //             >
-        //                 Continue shopping
-        //             </button>
-        //         </div>
-        //     </div>
-        // </div>
-
     )
 }
 

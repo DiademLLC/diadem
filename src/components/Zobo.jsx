@@ -1,6 +1,15 @@
-import React from 'react'
+import {useContext} from 'react'
+import { CartContext } from '../context/CartContext'
 
+const product = {
+    _id: 1,
+    name: 'zobo',
+    image: '/images/zobo-small.png',
+    price: 4,
+    type: 'drink'
+}
 const Zobo = () => {
+    const { addItemToCart } = useContext(CartContext)
   return (
     <section className=' bg-[#B71058] relative'>
         <div className="bg-[rgba(0,0,0,0.4)] w-full h-full absolute top-0 inset-0 z-10 "></div>
@@ -32,12 +41,10 @@ const Zobo = () => {
                             </div>
                         </div>
 
-                        <div className='flex flex-wrap gap-2 lg:gap-5'>
-                            <button className='bg-white text-[#5E3C33] px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>order now</button>
-                            <button className='bg-transparent border border-white text-white px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>add to cart</button>
+                        <div>
+                            <button onClick={() => addItemToCart(product, 1)} className='bg-transparent border border-white text-white px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>add to cart</button>
                         </div>
-                    </div>
-                    
+                    </div>                   
                 </div>
             </div>
         </div>

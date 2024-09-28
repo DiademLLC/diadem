@@ -9,8 +9,7 @@ const navLinks = [
     {name: 'Home', link: '/'},
     {name: 'About', link: '/about'},
     {name: 'Menu', link: '/#menu'},
-    {name: 'Shop', link: '/'},
-    {name: 'Contact', link: '/'},
+    {name: 'Contact', link: '/contact'},
 ]
 const Navbar = () => {
     const {cart, openCart, closeCart, cartItems} = useContext(CartContext);

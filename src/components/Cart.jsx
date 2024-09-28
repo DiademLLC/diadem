@@ -30,7 +30,7 @@ const Cart = () => {
                                     <div key={index} className="cartItems ">
                                         <div className='flex py-3'>
                                             <div className='w-[40%]'>
-                                                <img className='w-24 h-24 object-cover' src="/images/fries1.png" alt="" />
+                                                <img className='w-24 h-24 object-cover' src={item.image} alt="" />
                                             </div>
 
                                             <div className='relative w-[60%] space-y-1'>
@@ -39,16 +39,16 @@ const Cart = () => {
                                                 <h3>${item.price * item.quantity}</h3>
 
                                                 <div className="flex gap-3 items-center">
-                                                    <button onClick={()=>handleQuantityChange(item.id, item.type, (item.quantity - 1))} className="w-6 h-6 bg-orange-300 rounded flex items-center justify-center text-white">
+                                                    <button onClick={()=>handleQuantityChange(item._id, item.type, (item.quantity - 1))} className="w-6 h-6 bg-orange-300 rounded flex items-center justify-center text-white">
                                                         <FaMinus />
                                                     </button>
                                                     <p>{item.quantity}</p>
-                                                    <button onClick={()=>handleQuantityChange(item.id, item.type, (item.quantity + 1))} className="w-6 h-6 bg-orange-600 rounded flex items-center justify-center text-white">
+                                                    <button onClick={()=>handleQuantityChange(item._id, item.type, (item.quantity + 1))} className="w-6 h-6 bg-orange-600 rounded flex items-center justify-center text-white">
                                                         <FaPlus />
                                                     </button>
                                                 </div>
 
-                                                <button onClick={()=> removeItemFromCart(item.id, item.type)} className='absolute top-0 right-0'>
+                                                <button onClick={()=> removeItemFromCart(item._id, item.type)} className='absolute top-0 right-0'>
                                                     <FaXmark className="text-gray-400" />
                                                 </button>
                                             </div>

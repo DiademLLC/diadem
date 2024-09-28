@@ -13,7 +13,7 @@ export const useOrderContext = () => {
 export const OrderProvider = ({ children }) => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderDetails, setOrderDetails] = useState(null);
-  console.log('order placed on context:', orderPlaced)
+  // console.log('order placed on context:', orderPlaced)
 
   return (
     <OrderContext.Provider value={{ orderPlaced, setOrderPlaced, orderDetails, setOrderDetails }}>

@@ -1,30 +1,29 @@
 import Card from './reuseables/Card'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useMenu } from '../context/MenuContext'
 
 const categories = [
     { name: 'all', id: 1 },
     { name: 'rice', id: 2 },
-    { name: 'soups', id: 3 },
-    { name: 'snacks', id: 4 },
+    { name: 'soup', id: 3 },
+    { name: 'snack', id: 4 },
     { name: 'swallow', id: 5 },
-    { name: 'combo', id: 6 },
+    { name: 'drink', id: 6 },
 ]
 
-const menus = [
-    { id: 1, name: 'Fries', image: '', stars: 5, price: 10, category: 'rice' },
-    { id: 2, name: 'Sauce', image: '', stars: 3, price: 40, category: 'rice' },
-    { id: 3, name: 'Snack', image: '', stars: 5, price: 60, category: 'soups' },
-    { id: 4, name: 'Platter', image: '', stars: 4, price: 70, category: 'soups' },
-    { id: 5, name: 'Fries', image: '', stars: 5, price: 10, category: 'snacks' },
-    { id: 6, name: 'Sauce', image: '', stars: 3, price: 40, category: 'snacks' },
-    { id: 7, name: 'Snack', image: '', stars: 5, price: 60, category: 'swallow' },
-    { id: 8, name: 'Platter', image: '', stars: 4, price: 70, category: 'combo' },
-]
 
 const Menu = () => {
+    const { menuItems, loading } = useMenu()
     const [activeBtn, setActiveBtn] = useState(1);
-    const [foods, setFoods] = useState(menus)
+    const [foods, setFoods] = useState([])
     const [itemsToShow, setItemsToShow] = useState(window.innerWidth >= 1024 ? 8 : 4);
+
+    useEffect(() => {
+        if (!loading) {
+            // Set foods to menuItems after loading is complete
+            setFoods(menuItems);
+        }
+    }, [menuItems, loading]);
 
     const handleChangeCategory = (id) => {
         setActiveBtn(id)
@@ -32,9 +31,9 @@ const Menu = () => {
         const categoryName = category.name;
 
         if (categoryName === 'all') {
-            setFoods(menus);
+            setFoods(menuItems);
         } else {
-            const checkCategoryInMenu = menus.filter((menu) => menu.category === categoryName);
+            const checkCategoryInMenu = menuItems.filter((menu) => menu.category === categoryName);
             setFoods(checkCategoryInMenu);
         }
     
@@ -46,6 +45,12 @@ const Menu = () => {
         // Increment the number of items to show based on screen size
         setItemsToShow((prevCount) => prevCount + (isDesktop ? 8 : 4));
     };    
+
+    if (loading) {
+        return <div className="flex justify-center items-center ">
+            <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-white"></div>
+    </div>; // Or a spinner/loading animation
+    }
 
     return (
         <section id='menu' className='bg-gradient-to-t from-gray-200 to-gray-100 p-5 xl:p-10'>

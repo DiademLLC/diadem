@@ -12,8 +12,6 @@ const CheckoutCard = () => {
     const { orderPlaced, setOrderPlaced, orderDetails, setOrderDetails } = useOrderContext();
     const { cartItems, subTotal, updateItemQuantity, removeItemFromCart } = useContext(CartContext);
     const [isLoading, setIsLoading] = useState(false)
-    // const [orderPlaced, setOrderPlaced] = useState(false);
-    // const [orderDetails, setOrderDetails] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -46,7 +44,6 @@ const CheckoutCard = () => {
             ...prevForm,
             [name]: value
         }))
-        console.log(formData)
     }
 
     const handleSubmit = async (e) => {
@@ -59,29 +56,17 @@ const CheckoutCard = () => {
             }
 
             const orderData = {
-                ...formData,      // Form fields: name, email, phone etc
-                cartItems,        // Add cart items to the order data
+                ...formData,      
+                cartItems,       
             };
             
-            const response = await axios.post('http://localhost:3000/order', orderData)
-            return console.log('response from backend:', response)
-            // const response = {
-            //     data: {
-            //         success: true,
-            //         order: {
-            //             id: 12345,
-            //             name: formData.name
-            //         }
-            //     }
-            // }
+            const response = await axios.post('https://diadem-backend.vercel.app/api/order', orderData)
 
-            if (response.data.success) { //response.data.success
-                // return alert(response.data.success)
+            if (response.data.success) {
                 setOrderPlaced(true)
                 setOrderDetails(response.data.order);
                 navigate('/order-complete')
                 toast.success('order successfully made')
-                return console.log('response console:',orderPlaced)
             } else {
                 toast.error('Error making order. Try again')
             }
@@ -91,9 +76,7 @@ const CheckoutCard = () => {
             setIsLoading(false)
         }
     }
-    // useEffect(()=> {
-    //     console.log('useEffect console:',orderPlaced)
-    // }, [handleSubmit])
+
     return (
         <div className='bg-gray-100 max-w-[500px] rounded-lg overflow-hidden shadow-2xl'>
             <div className="flex flex-col items-center mb-8 mt-3 text-orange-600">
@@ -110,7 +93,7 @@ const CheckoutCard = () => {
                                 <div key={index} className="bg-white shadow rounded p-3 flex flex-wrap items-center gap-4 md:gap-8">
                                     {/* Image Container */}
                                     <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-                                        <img className="w-full h-full object-cover" src={`/images/${item.image}`} alt={item.name} />
+                                        <img className="w-full h-full object-cover" src={item.image} alt={item.name} />
                                     </div>
 
                                     {/* Name and Type */}
@@ -122,14 +105,14 @@ const CheckoutCard = () => {
                                     {/* Quantity Controls */}
                                     <div className="flex items-center gap-3">
                                         <button
-                                            onClick={() => updateItemQuantity(item.id, item.type, item.quantity - 1)}
+                                            onClick={() => updateItemQuantity(item._id, item.type, item.quantity - 1)}
                                             className="w-6 h-6 bg-orange-300 rounded flex items-center justify-center text-white"
                                         >
                                             <FaMinus />
                                         </button>
                                         <p>{item.quantity}</p>
                                         <button
-                                            onClick={() => updateItemQuantity(item.id, item.type, item.quantity + 1)}
+                                            onClick={() => updateItemQuantity(item._id, item.type, item.quantity + 1)}
                                             className="w-6 h-6 bg-orange-600 rounded flex items-center justify-center text-white"
                                         >
                                             <FaPlus />
@@ -140,7 +123,7 @@ const CheckoutCard = () => {
                                     <span className="ml-auto">${item.quantity * item.price}</span>
 
                                     {/* Remove Button */}
-                                    <button onClick={() => removeItemFromCart(item.id, item.type)}>
+                                    <button onClick={() => removeItemFromCart(item._id, item.type)}>
                                         <FaXmark className="text-gray-400" />
                                     </button>
                                 </div>
