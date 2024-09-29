@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { useAdmin } from '../../context/AdminContext';
 
 function AddMenu() {
+    const { fetchApi } = useAdmin()
     const priceOptions = [
         { name: 'Plate', price: '' },
         { name: 'Small Tray', price: '' },
@@ -18,7 +20,7 @@ function AddMenu() {
         category: '',
         image: null, // Image will be stored here
     });
-    const [isLoading , setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     // Handle price changes
     const handlePriceChange = (index, e) => {
@@ -47,9 +49,18 @@ function AddMenu() {
         data.append('image', formData.image); // Append the image file
 
         try {
-            const response = await axios.post('https://diadem-backend.vercel.app/admin/add-item', data, {withCredentials: true});
+            const response = await axios.post('https://diadem-backend.vercel.app/admin/add-item', data, { withCredentials: true });
             console.log(response.data);
             toast.success('uploaded item successfully')
+
+            // Reset form to initial state after adding item
+            setFormData({
+                name: '',
+                prices: priceOptions, // Reset prices as well
+                category: '',
+                image: null,
+            });
+            fetchApi()
         } catch (err) {
             console.error(err);
         } finally {
