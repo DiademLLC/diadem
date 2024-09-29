@@ -48,7 +48,7 @@ export const AdminProvider = ({ children }) => {
             console.log('user on admin context fetch api:', user)
             fetchApi();
         }     
-    }, []);
+    }, [user]);
 
 
 
