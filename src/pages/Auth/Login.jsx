@@ -26,6 +26,8 @@ const Login = () => {
             const {data} = await axios.post('https://diadem-backend.vercel.app/auth/login', formData, {
                 withCredentials: true, // To allow session cookies to be sent
             });
+            console.log('data from backend:', data)
+            console.log('Cookies:', document.cookie);
 
             if (data.success) {
                 setError('')
