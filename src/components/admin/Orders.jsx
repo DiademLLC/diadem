@@ -28,7 +28,7 @@ const GetOrders = () => {
                 </form>
             </div>
 
-            <div className='grid grid-cols-2 gap-5 w-full'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 w-full'>
                 {orders.map((order, index) => {
                     return (
                         <div key={index} className='bg-green-900 text-white rounded-xl shadow-xl p-4 '>
@@ -64,6 +64,8 @@ const GetOrders = () => {
                                 </table>
 
                                 <h4>Total price: ${order.totalAmount}</h4>
+
+                                <h4>Date of order:${order.createdAt}</h4>
 
                                 <div>
                                     <h3 className='text-lg'>Customer details</h3>

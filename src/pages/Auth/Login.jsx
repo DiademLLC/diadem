@@ -62,7 +62,7 @@ const Login = () => {
                                 <input
                                     value={formData.email}
                                     onChange={(e) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }))}
-                                    className='border p-2 rounded-lg border-purple-300 outline-none'
+                                    className='border p-2 rounded-lg border-purple-300 outline-none bg-transparent'
                                     type="email"
                                     name="email"
                                     id="email"
@@ -75,7 +75,7 @@ const Login = () => {
                                     <input
                                         value={formData.password}
                                         onChange={(e) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }))}
-                                        className='outline-none'
+                                        className='outline-none bg-transparent'
                                         type={!isEyeOpen ? 'password' : 'text'}
                                         name="password"
                                         id="password"

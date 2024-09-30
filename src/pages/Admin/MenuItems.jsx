@@ -4,13 +4,13 @@ import AdminMenuItems from '../../components/admin/AdminMenuItems';
 const MenuItems = () => {
   return (
     <div className='flex justify-between'>
-            <AdminSidenav />
+      <AdminSidenav />
 
-            <div className='lg:ml-[25%] w-full'>
-                <AdminMenuItems />
-            </div>
-            
-        </div>
+      <div className='lg:ml-[25%] w-full max-w-[1440px] mx-auto'>
+        <AdminMenuItems />
+      </div>
+
+    </div>
   )
 }
 

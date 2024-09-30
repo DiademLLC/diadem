@@ -24,6 +24,7 @@ const AdminMenuItems = () => {
 
             if (response.data.success) {
                 toast.success(response.data.message)
+                await fetchApi()
             } else {
                 toast.error('here')
             }
@@ -41,7 +42,7 @@ const AdminMenuItems = () => {
 
     return (
         <div className='relative'>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                 {menuItems.map((item, index) => {
                     return (
                         <div key={index} className=' bg-black/70 text-white rounded-2xl shadow-xl overflow-hidden'>
