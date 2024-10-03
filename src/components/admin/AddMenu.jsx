@@ -6,6 +6,7 @@ import { useAdmin } from '../../context/AdminContext';
 function AddMenu() {
     const { fetchApi } = useAdmin()
     const priceOptions = [
+        { name: 'Unit', price: '' },
         { name: 'Plate', price: '' },
         { name: 'Small Tray', price: '' },
         { name: 'Medium Tray', price: '' },
@@ -71,7 +72,7 @@ function AddMenu() {
     return (
         <section>
             <div className='mx-5 md:mx-20 my-20'>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-5 p-5 border border-orange-500 shadow-xl rounded-lg'>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name">Name of item:</label>
                         <input
@@ -79,7 +80,7 @@ function AddMenu() {
                             placeholder="Name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className='border p-2'
+                            className='border p-2 bg-white text-black border-orange-300 rounded-lg'
                         />
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -88,7 +89,7 @@ function AddMenu() {
                             type="text"
                             value={formData.category}
                             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                            className='border p-2'
+                            className='border p-2 bg-white text-black border-orange-300 rounded-lg'
                             required
                         >
                             <option value="soup">Soup</option>
@@ -96,6 +97,7 @@ function AddMenu() {
                             <option value="swallow">Swallow</option>
                             <option value="snack">Snack</option>
                             <option value="drink">Drink</option>
+                            <option value="others">Others</option>
                         </select>
                     </div>
 
@@ -110,15 +112,17 @@ function AddMenu() {
                                     placeholder={`Enter price for ${priceOption.name}`}
                                     value={priceOption.price}
                                     onChange={(e) => handlePriceChange(index, e)}
-                                    className='border p-1'
+                                    className='border p-1 bg-white text-black border-orange-300 rounded-lg'
                                 />
+                               
+                                {priceOption.name === 'Unit' && 'per 12 pcs'}
                             </div>
                         ))}
                     </div>
 
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="file">Upload image of the item:</label>
-                        <input className='border p-2' type="file" onChange={handleFileChange} />
+                        <input className='border p-2 bg-white text-black border-orange-300 rounded-lg' type="file" onChange={handleFileChange} />
                     </div>
 
                     <div className='text-center'>

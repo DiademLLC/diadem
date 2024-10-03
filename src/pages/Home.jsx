@@ -6,6 +6,7 @@ import Popular from "../components/Popular";
 import Blocks from "../components/Blocks";
 import Menu from "../components/Menu";
 import Zobo from "../components/Zobo";
+import Reviews from "../components/Reviews";
 
 const Home = () => {
   const { hash } = useLocation();
@@ -22,10 +23,11 @@ const Home = () => {
   return (
     <div className="relative">        
         <HomeHero />
-        <Popular />
+        {/* <Popular /> */}
         <Blocks />
         <Menu />
-        <Zobo />        
+        <Zobo />     
+        <Reviews />   
     </div>
   )
 }

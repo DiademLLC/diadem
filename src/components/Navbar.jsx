@@ -90,11 +90,11 @@ const Navbar = () => {
     };
 
     return (
-        <header className=' relative bg-orange-600/90 z-50'>
+        <header className=' fixed w-full bg-black/95 z-50'>
             <div className='max-w-[1440px] mx-auto'>
-                <nav className='flex sticky items-center justify-between h-14 lg:h-[80px] xl:h-[90px] mx-5 lg:mx-10'> {/*mx-24*/}
-                    <div className='h-10 w-10 lg:h-20 lg:w-20'>
-                        <img className='h-full w-full object-cover' src="/images/logo.png" alt="diadem logo" />
+                <nav className='flex sticky items-center justify-between h-14 lg:h-[75px] mx-5 lg:mx-10'> {/*mx-24*/}
+                    <div className='h-10 w-10 lg:h-[70px] lg:w-[70px]'>
+                        <img className='h-full w-full object-cover' src="/images/new_logo.png" alt="diadem logo" />
                     </div>
 
                     <div className='hidden lg:flex gap-10 text-white'>

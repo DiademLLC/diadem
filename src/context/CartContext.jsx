@@ -113,8 +113,6 @@ export const CartProvider = ({children}) => {
     }
 
     const removeItemFromCart = (itemId, type) => {
-        // return localStorage.removeItem('cartItems');
-        // console.log('itemId:', itemId)
         const item = cartItems.find((item)=> 
             item._id === itemId && item.type === type
         )
@@ -129,8 +127,12 @@ export const CartProvider = ({children}) => {
         }
     }
 
+    const clearCart = () => {
+        localStorage.removeItem('cartItems');
+    }
+
     return (
-        <CartContext.Provider value={{ cart, openCart, closeCart, cartItems, subTotal, isLoading, addItemToCart, updateItemQuantity, removeItemFromCart}}>
+        <CartContext.Provider value={{ cart, openCart, closeCart, cartItems, subTotal, isLoading, addItemToCart, updateItemQuantity, removeItemFromCart, clearCart}}>
             {children}
         </CartContext.Provider>
     )

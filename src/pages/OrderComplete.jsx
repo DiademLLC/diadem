@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const OrderCompletionPage = () => {
     const { orderPlaced, setOrderPlaced, orderDetails } = useOrderContext();
+    const { clearCart } = useContext(CartContext)
     const navigate = useNavigate();
     const isMountedRef = useRef(true);
 
@@ -26,18 +27,18 @@ const OrderCompletionPage = () => {
 
     // Set the ref to false once the component has mounted
     useEffect(() => {
+        clearCart(); //clear the cart when order is successful
         isMountedRef.current = false; // Component is mounted now, no longer in initial mount
     }, []);
     
     if (!orderPlaced) return null;
-    console.log('order placed on complete:', orderPlaced)
-
-    // Calculate total amount
-    // const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    // console.log('order placed on complete:', orderPlaced)
+    const handleContinue = () => {
+        navigate('/#menu')
+    }
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow-lg my-10">
-            {/* <h1 className="text-2xl font-bold mb-4">{orderDetails.id} {orderDetails.name}</h1> */}
             <h1 className="text-2xl font-bold mb-4">Order Completed Successfully!</h1>
             <p className="mb-6">Thank you for your order. Here are your order details:</p>
             <p className="mb-4">Order Ref: {orderDetails.orderRef}</p>
@@ -69,7 +70,7 @@ const OrderCompletionPage = () => {
                 <p className="text-lg font-bold">${orderDetails.totalAmount.toFixed(2)}</p>
             </div>
 
-            <button className="mt-6 w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600 transition duration-200">
+            <button onClick={handleContinue} className="mt-6 w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600 transition duration-200">
                 Continue Shopping
             </button>
         </div>

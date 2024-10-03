@@ -11,7 +11,7 @@ const product = {
 const Zobo = () => {
     const { addItemToCart } = useContext(CartContext)
   return (
-    <section className=' bg-[#B71058] relative'>
+    <section className=' bg-[#B71058] relative font-Copse'>
         <div className="bg-[rgba(0,0,0,0.4)] w-full h-full absolute top-0 inset-0 z-10 "></div>
         
         <div className='flex flex-col lg:flex-row relative max-w-[1440px] mx-auto'>            

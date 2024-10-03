@@ -2,7 +2,7 @@ import React from 'react'
 
 const Blocks = () => {
   return (
-    <section className='h-[250px] md:h-full overflow-hidden bg-gray-100 py-10 mx-5 md:mx-0'>
+    <section className='h-[230px] md:h-full overflow-hidden font-Copse'>
         <div className='flex gap-1 max-w-[1440px] mx-auto'>
             <div className='relative w-1/2 h-[250px] md:h-full'>
                 <img className='object-cover w-full h-full' src="/images/rice1.png" alt="" />
@@ -10,10 +10,10 @@ const Blocks = () => {
 
                 <div className='absolute inset-0 flex flex-col justify-start p-4 sm:p-8 md:p-14  z-20 text-white sm:space-y-2 md:space-y-5'>
                     <h2 className='text-bold text-xl md:text-4xl lg:text-5xl'>JOLLOF RICE </h2>
-                    <span className='text-medium  md:text-2xl lg:text-3xl'>TURKEY/PLANTAIN</span>
+                    <span className='text-medium text-xs md:text-2xl lg:text-3xl'>TURKEY/PLANTAIN</span>
 
-                    <div className='flex'>
-                        <button className='bg-[#81234c] px-2 md:px-4 py-2 rounded-full'>DIADEM SPECIAL</button>
+                    <div className='flex mt-2'>
+                        <button className='bg-red-600 px-3 md:px-4 py-1 rounded-full'>DIADEM SPECIAL</button>
                     </div>
                 </div>
             </div>

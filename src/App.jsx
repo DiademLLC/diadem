@@ -89,11 +89,12 @@ function App() {
             <Route
               path="/admin/*"
               element={
-                <AdminProvider>
-                  <ProtectedRoute>
-                    <AdminRoutes />
-                  </ProtectedRoute>
-                </AdminProvider>
+                // <AdminProvider>
+                //   <ProtectedRoute>
+                //     <AdminRoutes />
+                //   </ProtectedRoute>
+                // </AdminProvider>
+                <AdminRoutes />
               }
             />
           </Routes>

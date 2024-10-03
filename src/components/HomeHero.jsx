@@ -1,33 +1,115 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect } from 'react';
+
+const slideVariants = {
+    hidden: { opacity: 1, scale: 1.2 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeInOut" } },
+    exit: { opacity: 1, scale: 1.1, transition: { duration: 0.8, ease: "easeInOut" } }
+};
+
+const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 1, ease: "easeInOut" } },
+    exit: { opacity: 0, y: -50, transition: { duration: 0.8, ease: "easeInOut" } }
+};
+
+const carousel = [
+    'SAUSAGE ROLL.webp',
+    'JOLLOF RICE.webp'
+]
+
 const HomeHero = () => {
-  return (
-    <section className='py-[24.5] max-w-[1440px] mx-auto relative'>
-        <div className=' h-full flex flex-col lg:flex-row justify-between lg:m-5 xl:m-14  '>
-            <div className='flex flex-col justify-center lg:ml-5 p-5'>
-                <div className='space-y-4 lg:space-y-5'>
-                    <h1 className=' font-bold whitespace-nowrap'>
-                        Welcome 
-                        to <br className='hidden xl:block' /> 
-                        <br className='block xl:hidden' />
-                        <span className='text-orange-700'>
-                            Diadem foods
-                        </span>
-                    </h1>
+    const [currentSlide, setCurrentSlide] = useState(0);
 
-                    <p className='font-normal text-xl md:text-3xl'>“It’s not just food, it’s an experience” </p>
+    // Automatically advance slides after a certain duration
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prevSlide) =>
+                prevSlide === carousel.length - 1 ? 0 : prevSlide + 1
+            );
+        }, 8000); // 5-second interval
+        return () => clearInterval(interval); // Clear interval on unmount
+    }, [carousel.length]);
 
-                    <a href="#menu">
-                        <button className='bg-[#CB3530] bg-gradient-to-br via-[#c46002] hover:via-black/80 from-[#CB3530] to-[#CB3530]  px-3 md:px-5 py-1 md:py-2 rounded-[10px] text-white text-2xl'>Shop now</button>
-                    </a>
-                </div>
-                
-            </div>
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000,
+        fade: true,
+        arrows: false,
+    };
 
-            <div className='hidden lg:block xl:absolute -top-36 lg:right-0 z-0'>
-                <img className='h-full w-full object-cover' src="/images/hero-img.png" alt="" />
-            </div>
-        </div>
-    </section>
-  )
+    return (
+        <section className="h-screen overflow-hidden ">
+            <Slider {...settings}>
+                <AnimatePresence mode="wait">
+                    {carousel.map((img, i) => (
+                        i === currentSlide && (
+                            <motion.div
+                                key={i} // Unique key for re-render and animation
+                                className="h-screen relative"
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                variants={slideVariants}
+                            >
+                                <div className="absolute inset-0 -z-10 h-screen bg-black/60"></div>
+
+                                <motion.img
+                                    key={`img-${i}`}
+                                    className="absolute top-0 -z-20 w-full h-screen object-cover"
+                                    src={`/images/${img}`}
+                                    alt=""
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                    variants={slideVariants}
+                                    transition={{ duration: 5, ease: "easeOut" }}
+                                />
+
+                                <motion.div
+                                    key={`text-${i}`}
+                                    className="flex flex-col items-center justify-center h-full space-y-8"
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                    variants={textVariants}
+                                >
+                                    <div>
+                                        <h1 className="text-6xl text-white font-bold mt-20 text-center">
+                                            Welcome to <span className="text-red-600">Diadem Foods</span>
+                                        </h1>
+                                        <p className="font-normal text-white text-center text-lg pb-3">
+                                            “It’s not just food, it’s an experience”
+                                        </p>
+                                    </div>
+
+                                    <motion.a
+                                        href='#menu'
+                                        className="bg-red-700 hover:bg-red-900 text-white font-semibold px-6 py-2 rounded text-sm"
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="exit"
+                                        variants={textVariants}
+                                    >
+                                        SHOP NOW
+                                    </motion.a>
+                                </motion.div>
+                            </motion.div>
+                        )
+                    ))}
+                </AnimatePresence>
+
+            </Slider>
+        </section>
+    )
 }
 
 export default HomeHero

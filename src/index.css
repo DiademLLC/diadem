@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Copse&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,7 +47,7 @@ h1{
 }
 .heading {
   font-family: "Francois One", sans-serif;
-  color: #4F4F4F;
+  /* color: #4F4F4F; */
 }
 .category {
   font-family: "Coming Soon", cursive;

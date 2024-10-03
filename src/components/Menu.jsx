@@ -9,6 +9,7 @@ const categories = [
     { name: 'snack', id: 4 },
     { name: 'swallow', id: 5 },
     { name: 'drink', id: 6 },
+    { name: 'others', id: 7 },
 ]
 
 
@@ -56,7 +57,7 @@ const Menu = () => {
         <section id='menu' className='bg-gradient-to-t from-gray-200 to-gray-100 p-5 xl:p-10'>
             <div className='space-y-10 max-w-[1440px] mx-auto'>
                 <div className='space-y-6'>
-                    <h2 className='heading text-3xl lg:text-4xl'>Food Categories</h2>
+                    <h2 className='heading text-3xl lg:text-4xl text-[#4F4F4F]'><span className=' text-red-600'>Food</span> Categories</h2>
 
                     <div className="md:hidden">
                         <select
@@ -78,7 +79,7 @@ const Menu = () => {
                             <button
                                 onClick={() => handleChangeCategory(category.id)}
                                 key={category.id}
-                                className={`${activeBtn === category.id ? 'bg-orange-500/80 text-white ' : 'bg-white text-black'
+                                className={`${activeBtn === category.id ? 'bg-black/80 text-red-500' : 'bg-white text-[#4F4F4F]'
                                     } capitalize shadow-xl p-2`}
                             >
                                 {category.name}
@@ -88,7 +89,7 @@ const Menu = () => {
                 </div>
 
                 <div className='space-y-6'>
-                    <h2 className='heading text-3xl lg:text-4xl text-center'>Today's Menu</h2>
+                    <h2 className='heading text-3xl lg:text-4xl text-center text-[#4F4F4F]'>Today's <span className=' text-red-600'>Menu</span></h2>
 
                     <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 justify-center'>
                         {foods.slice(0, itemsToShow).map((menu, index) => {

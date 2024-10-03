@@ -17,17 +17,8 @@ const Card = ({product, cardType}) => {
 
         <div className={`${cardType === 'menu' && 'bg-white'} p-3`}>
             <h3 className={` text-2xl`}>{product.name}</h3>
-            {/* <div className="flex items-center gap-2">
-                {Array.from({ length: product.stars }).map((_, i) => {
-                    return <FaStar key={i} className="text-orange-400 text-xl" />
-                })}
 
-                {cardType === 'popular' && <p>4.5(140)</p>}
-            </div> */}
-            <p className='text-xs'>descriptive text about this particular food</p>
-
-            <div className="flex items-center justify-between mt-1">
-                {/* <p className="pricing">${product.price}</p> */}
+            <div className="flex items-center justify-between mt-3">
                 {/* <button onClick={handleOpenModal} className="bg-black/80 text-white px-2 py-1 capitalize rounded-md">add to cart</button> */}
                 <button onClick={handleOpenModal} className="bg-orange-600/80 w-6 h-6 text-white p-2 capitalize rounded-full flex justify-center items-center">
                     <FaPlus className='' />
