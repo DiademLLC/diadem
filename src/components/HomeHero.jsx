@@ -83,8 +83,8 @@ const HomeHero = () => {
                                     variants={textVariants}
                                 >
                                     <div>
-                                        <h1 className="text-6xl text-white font-bold mt-20 text-center">
-                                            Welcome to <span className="text-red-600">Diadem Foods</span>
+                                        <h1 className="text-6xl lg:text-8xl text-white font-bold mt-20 text-center">
+                                            Welcome to <br /> <span className="text-red-600">Diadem Foods</span>
                                         </h1>
                                         <p className="font-normal text-white text-center text-lg pb-3">
                                             “It’s not just food, it’s an experience”

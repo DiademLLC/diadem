@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(true)
         try {
             const { data } = await axios.get('https://diadem-backend.vercel.app/auth/status', { withCredentials: true });
+            // const { data } = await axios.get('http://localhost:3000/auth/status', { withCredentials: true });
 
             // console.log(data)
             if (data.isAuthenticated) {

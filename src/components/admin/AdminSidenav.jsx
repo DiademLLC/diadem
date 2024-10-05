@@ -62,7 +62,7 @@ const AdminSidenav = () => {
           <div className={`fixed top-0 left-0 w-[50%] lg:w-[20%] bg-black text-white h-screen z-40 lg:block transform transition-transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
             <nav className='space-y-10 pl-10'>
               {/* Logo */}
-              <img src="/images/logo.png" alt="Logo" />
+              <img src="/images/new_logo.png" alt="Logo" />
     
               <div className='py-10'>
                 <ul>
@@ -71,7 +71,7 @@ const AdminSidenav = () => {
                       <Link 
                         to={`/admin/${nav.route}`} 
                         className='text-xl uppercase' 
-                        onClick={() => setIsOpen(false)} // Close the menu when an item is clicked
+                        onClick={() => setIsOpen(false)}
                       >
                         {nav.name}
                       </Link>

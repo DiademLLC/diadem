@@ -28,7 +28,6 @@ export const CartProvider = ({children}) => {
     }
 
     useEffect(() => {
-        // console.log('cartItems:', cartItems)
         setSubTotal(calculateSubTotal(cartItems));
 
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
@@ -128,6 +127,7 @@ export const CartProvider = ({children}) => {
     }
 
     const clearCart = () => {
+        setCartItems([]);
         localStorage.removeItem('cartItems');
     }
 

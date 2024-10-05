@@ -22,12 +22,10 @@ const Login = () => {
         setIsLoading(true);
 
         try { 
-            // return;
             const {data} = await axios.post('https://diadem-backend.vercel.app/auth/login', formData, {
-                withCredentials: true, // To allow session cookies to be sent
+                withCredentials: true, 
             });
-            console.log('data from backend:', data)
-            console.log('Cookies:', document.cookie);
+            // console.log('data from backend:', data)
 
             if (data.success) {
                 setError('')
@@ -37,9 +35,9 @@ const Login = () => {
                 navigate('/admin')
             } else {
                 setError('Invalid email or password')
-                // toast.error('data.message');
             }
         } catch (error) {
+            setError('Invalid email or password')
             console.error('error:', error)
         } finally {
             setIsLoading(false)
@@ -50,11 +48,12 @@ const Login = () => {
     useEffect(() => {
         setIsButtonActive(formData.email.length > 0 && formData.password.length > 0);
     }, [formData])
+
     return (
         <section>
             <div className='flex justify-center items-center h-screen'>
                 <div className='  bg-gray-300 border-2 border-purple-600 rounded-xl p-10'>
-                    {error && <p className='text-red-500 text-center'>{error}</p>}
+                    {error && <p className='text-red-500 text-center underline'>{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className='space-y-4'>
                             <div className='flex flex-col'>
@@ -62,7 +61,7 @@ const Login = () => {
                                 <input
                                     value={formData.email}
                                     onChange={(e) => setFormData((p) => ({ ...p, [e.target.name]: e.target.value }))}
-                                    className='border p-2 rounded-lg border-purple-300 outline-none bg-transparent'
+                                    className='border p-2 rounded-lg border-purple-300 bg-white outline-none bg-transparent'
                                     type="email"
                                     name="email"
                                     id="email"

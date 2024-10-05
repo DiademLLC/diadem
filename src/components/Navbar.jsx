@@ -93,9 +93,9 @@ const Navbar = () => {
         <header className=' fixed w-full bg-black/95 z-50'>
             <div className='max-w-[1440px] mx-auto'>
                 <nav className='flex sticky items-center justify-between h-14 lg:h-[75px] mx-5 lg:mx-10'> {/*mx-24*/}
-                    <div className='h-10 w-10 lg:h-[70px] lg:w-[70px]'>
+                    <Link to='/' className='h-10 w-10 lg:h-[70px] lg:w-[70px]'>
                         <img className='h-full w-full object-cover' src="/images/new_logo.png" alt="diadem logo" />
-                    </div>
+                    </Link>
 
                     <div className='hidden lg:flex gap-10 text-white'>
                         {navLinks.map((link, index) => {

@@ -7,15 +7,10 @@ import { FaXmark } from 'react-icons/fa6'
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
-const reviews = [
-    { name: 'Omotolani Babs', rating: 4, message: 'The best place to order Nigerian delicacies. I ordered from Texas and every soup and Zobo was delivered intact and above all it tasted exquisite. I totally recommend.' },
-    { name: 'John Olatunde', rating: 5, message: 'Great taste. I would recommend their services any day and time.' },
-    // { name: 'Luke dunfy', rating: 4, message: 'The best food to get in midtown for lunch. Friendly staff and the food is made with love.' },
-    { name: 'Adeoluwa', rating: 5, message: 'The best food to get in midtown for lunch. Friendly staff and the food is made with love.' },
-]
+import { useReviewContext } from '../context/ReviewContext';
 
 const Reviews = () => {
+    const { reviews } = useReviewContext()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
@@ -47,21 +42,33 @@ const Reviews = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // setIsLoading(true)
-        // try {
-        //     const response = await axios.post('https://diadem-backend.vercel.app/api/review', formData, { withCredentials: true })
 
-        //     if (response.data.success) {
-        //         toast.success('review submitted successfully')
-        //         setIsModalOpen(false)
-        //     } else{
-        //         setError(response.data.message)
-        //     }
-        // } catch (error) {
-        //     console.error('error:', error)
-        // } finally {
-        //     setIsLoading(false)
-        // }
+        if(formData.rating === null) {
+            return setError('choose a star rating')
+        }
+        setIsLoading(true)
+        try {
+            const response = await axios.post('https://diadem-backend.vercel.app/api/review', formData, { withCredentials: true })
+            // const response = await axios.post('http://localhost:3000/api/review', formData, { withCredentials: true })
+
+            if (response.data.success) {
+                toast.success('review submitted successfully')
+                setIsModalOpen(false)
+                setError('')
+                setFormData({
+                    name: '',
+                    email: '',
+                    rating: null,
+                    message: ''
+                })
+            } 
+        } catch (error) {
+            // setError('Review submission failed. Try again')
+            console.error('error:', error.response.data)
+            setError(error.response.data.message)
+        } finally {
+            setIsLoading(false)
+        }
     }
     return (
         <section className=' relative'>
@@ -104,7 +111,7 @@ const Reviews = () => {
             {isModalOpen &&
                 <div className='flex justify-center items-center h-full'>
                     <div className='absolute inset-0 -z-10 bg-black/30 h-full w-full '></div>
-                    <div className='absolute inset-0 m-auto bg-red-900 rounded-3xl p-6 max-w-md w-[95%] md:w-full h-[85%] shadow-lg'>
+                    <div className='absolute inset-0 m-auto bg-gray-800 rounded-3xl p-6 max-w-md w-[95%] md:w-full h-[85%] shadow-lg'>
                         <div className=' absolute right-6'>
                             <button 
                                 onClick={() => setIsModalOpen(false)}
@@ -112,7 +119,7 @@ const Reviews = () => {
                         </div>
 
                         <div className='flex justify-center items-center h-full w-full'>
-                            <form onSubmit={handleSubmit} className='w-full space-y-8'>
+                            <form onSubmit={handleSubmit} className='w-full '>
                                 <div className='space-y-2'>
                                     <div className='flex flex-col gap-2'>
                                         <label htmlFor="name" className='text-white'>Name:</label>
@@ -122,6 +129,7 @@ const Reviews = () => {
                                             name='name'
                                             id='name'
                                             type="text"
+                                            required
                                             className='border border-white bg-white rounded px-3 py-2'
                                         />
                                     </div>
@@ -134,6 +142,7 @@ const Reviews = () => {
                                             name='email'
                                             id='email'
                                             type="email"
+                                            required
                                             className='border border-white bg-white rounded px-3 py-2'
                                         />
                                     </div>
@@ -147,6 +156,7 @@ const Reviews = () => {
                                             name='message'
                                             id='message'
                                             type="text"
+                                            required
                                             className='border border-white bg-white rounded px-3 py-2'
                                         />
                                     </div>
@@ -172,12 +182,17 @@ const Reviews = () => {
 
                                 </div>
 
-                                <div className='flex justify-center'>
-                                    <button type="submit" className='bg-white rounded-lg px-4 py-2 font-semibold text-red-800 capitalize text-sm hover:bg-gray-200 transition'>
-                                        Submit Review
+                                <div className='flex justify-center mt-8'>
+                                    <button type="submit" className='bg-white rounded-lg px-4 py-2 font-semibold text-gray-800 capitalize text-sm hover:bg-gray-200 transition'>
+                                        {isLoading ? 'Submitting...' : 'Submit Review'}
                                     </button>
                                 </div>
+
+                                <div className='mt-4'>
+                                    {error && <p className='text-red-600 text-xl text-center underline'>{error}</p>}
+                                </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>

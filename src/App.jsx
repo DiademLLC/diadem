@@ -4,6 +4,8 @@ import { ModalProvider } from "./context/ModalContext";
 import { OrderProvider } from "./context/OrderContext";
 import { AdminProvider } from "./context/AdminContext";
 import { AuthProvider } from "./context/AuthContext";
+import { ReviewProvider } from "./context/ReviewContext";
+
 import { useAuth } from "./context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -31,12 +33,12 @@ import Login from "./pages/Auth/Login";
 
 // Protected Route for Admin
 const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn, loading, user } = useAuth(); 
+  const { isLoggedIn, loading, user } = useAuth();
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log('user:', user)
+  // console.log('user:', user)
   return isLoggedIn && user ? children : <Navigate to="/diadem/login" />;
 };
 
@@ -50,7 +52,7 @@ function App() {
         <AuthProvider>
           <Routes>
             {/* Login & Signup Routes */}
-            <Route path="/diadem/signup" element={<Signup />} />
+            {/* <Route path="/diadem/signup" element={<Signup />} /> */} {/*removed signup*/}
             <Route path="/diadem/login" element={<Login />} />
 
             {/* Main App Routes (with Navbar and Footer) */}
@@ -58,29 +60,31 @@ function App() {
               path="*"
               element={
                 <MenuProvider>
-                  <CartProvider>
-                    <ModalProvider>
-                      <OrderProvider>
-                        <>
-                          <Navbar />
-                          <div className="content">
-                            <Routes>
-                              <Route path="/" element={<Home />} />
-                              <Route path="/checkout" element={<Checkout />} />
-                              <Route
-                                path="/order-complete"
-                                element={<OrderCompletionPage />}
-                              />
-                              <Route path="/about" element={<AboutPage />} />
-                              <Route path="/contact" element={<ContactPage />} />
-                            </Routes>
-                          </div>
-                          <Modal />
-                          <Footer />
-                        </>
-                      </OrderProvider>
-                    </ModalProvider>
-                  </CartProvider>
+                  <ReviewProvider>
+                    <CartProvider>
+                      <ModalProvider>
+                        <OrderProvider>
+                          <>
+                            <Navbar />
+                            <div className="content">
+                              <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/checkout" element={<Checkout />} />
+                                <Route
+                                  path="/order-complete"
+                                  element={<OrderCompletionPage />}
+                                />
+                                <Route path="/about" element={<AboutPage />} />
+                                <Route path="/contact" element={<ContactPage />} />
+                              </Routes>
+                            </div>
+                            <Modal />
+                            <Footer />
+                          </>
+                        </OrderProvider>
+                      </ModalProvider>
+                    </CartProvider>
+                  </ReviewProvider>
                 </MenuProvider>
               }
             />
@@ -89,12 +93,11 @@ function App() {
             <Route
               path="/admin/*"
               element={
-                // <AdminProvider>
-                //   <ProtectedRoute>
-                //     <AdminRoutes />
-                //   </ProtectedRoute>
-                // </AdminProvider>
-                <AdminRoutes />
+                <AdminProvider>
+                  <ProtectedRoute>
+                    <AdminRoutes />
+                  </ProtectedRoute>
+                </AdminProvider>
               }
             />
           </Routes>

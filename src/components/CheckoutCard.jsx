@@ -9,8 +9,8 @@ import { useOrderContext } from "../context/OrderContext";
 
 
 const CheckoutCard = () => {
-    const { orderPlaced, setOrderPlaced, orderDetails, setOrderDetails } = useOrderContext();
-    const { cartItems, subTotal, updateItemQuantity, removeItemFromCart } = useContext(CartContext);
+    const { setOrderPlaced, setOrderDetails } = useOrderContext();
+    const { cartItems, subTotal, updateItemQuantity, removeItemFromCart, clearCart } = useContext(CartContext);
     const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -47,7 +47,6 @@ const CheckoutCard = () => {
     }
 
     const handleSubmit = async (e) => {
-        console.log('submit block')
         e.preventDefault()
         setIsLoading(true)
         try {
@@ -61,16 +60,20 @@ const CheckoutCard = () => {
             };
             
             const response = await axios.post('https://diadem-backend.vercel.app/api/order', orderData)
+            // const response = await axios.post('http://localhost:3000/api/order', orderData)
+            
 
             if (response.data.success) {
                 setOrderPlaced(true)
                 setOrderDetails(response.data.order);
+                clearCart(); //clear the cart when order is successful
                 navigate('/order-complete')
                 toast.success('order successfully made')
             } else {
                 toast.error('Error making order. Try again')
             }
         } catch (error) {
+            toast.error('Error making order. Try again')
             console.error('Error:', error)
         } finally {
             setIsLoading(false)
@@ -78,7 +81,7 @@ const CheckoutCard = () => {
     }
 
     return (
-        <div className='bg-gray-100 max-w-[500px] rounded-lg overflow-hidden shadow-2xl'>
+        <div className='bg-gray-100 max-w-[500px] rounded-lg overflow-hidden shadow-2xl mt-20 mb-10 lg:my-32'>
             <div className="flex flex-col items-center mb-8 mt-3 text-orange-600">
                 <FaOpencart className="text-3xl" />
                 <h2 className="uppercase font-semibold">summary</h2>

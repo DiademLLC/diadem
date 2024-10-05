@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'Copse': 'Copse'
+      'Copse': 'Copse',
+      'Narrow': "PT Sans Narrow"
     }
   },
   plugins: [],

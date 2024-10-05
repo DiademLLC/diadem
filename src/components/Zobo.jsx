@@ -27,14 +27,14 @@ const Zobo = () => {
                 <div className='relative lg:absolute lg:-left-32 z-10 flex flex-col justify-center lg:justify-between space-y-2 lg:space-y-8 h-full lg:py-28 p-4 lg:p-0'>
                     <h2 className='text-center lg:text-start text-4xl md:text-6xl xl:text-8xl font-bold zobo-font'>DIADEM FRUITY <br/> ZOBO</h2>
 
-                    <div className='space-y-5 lg:space-y-10'>
+                    <div className='space-y-5 lg:space-y-8'>
                         <div className='space-y-2 max-w-[700px] lg:max-w-[600px]'>
                             <p className='xl:text-xl'>
                                 Discover the Rich Flavors of Zobo! <br />
                                 Experience the authentic taste of Africa with our refreshing Zobo drink. Made from natural hibiscus leaves, our Zobo is packed with bold flavors, vibrant colors, and a burst of health benefits. Whether you enjoy it chilled or with a twist of ginger or pineapple, every sip brings you closer to the heart of African tradition. Taste the difference. Feel the freshness.
                             </p>
 
-                            <div className='flex flex-wrap gap-2 uppercase text-sm md:text-base'>
+                            <div className='flex flex-wrap gap-2 uppercase text-xs md:text-sm'>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> 1 Litre </div>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> alc 0% </div>
                                 <div className='bg-transparent border border-white px-3 lg:px-6 py-2 rounded-full'> 100% natural </div>
@@ -42,7 +42,11 @@ const Zobo = () => {
                         </div>
 
                         <div>
-                            <button onClick={() => addItemToCart(product, 1)} className='bg-transparent border border-white text-white px-3 lg:px-5 py-1 lg:py-3 rounded-full text-xl md:text-2xl font-semibold uppercase'>add to cart</button>
+                            <button 
+                                onClick={() => addItemToCart(product, 1)} 
+                                className='bg-black border border-white text-white px-3 lg:px-5 py-1 lg:py-2 rounded-full text-xl md:text-2xl font-semibold uppercase'>
+                                    add to cart
+                            </button>
                         </div>
                     </div>                   
                 </div>
