@@ -1,9 +1,15 @@
 {
   "redirects": [
     {
-      "source": "https://diademfoods.com",
-      "destination": "https://www.diademfoods.com",
-      "permanent": true
+      "source": "/(.*)",  
+      "has": [
+        {
+          "type": "host",
+          "value": "diademfoods.com"  
+        }
+      ],
+      "destination": "https://www.diademfoods.com/$1",  
+      "permanent": true   
     }
   ],
   "rewrites": [
