@@ -43,13 +43,13 @@ const Footer = () => {
                     <div className='flex flex-col items-start max-w-44 w-full'>
                         <h3 className='font-semibold mb-2 text-xl'>Follow Us</h3>
                         <div className='flex space-x-4'>
-                            <a href='#' className='hover:text-gray-300'>
+                            <a href='https://www.facebook.com/Diademsfood?mibextid=ZbWKwL' className='hover:text-gray-300'>
                                 <FaFacebook className='text-2xl' />
                             </a>
-                            <a href='#' className='hover:text-gray-300'>
+                            {/* <a href='#' className='hover:text-gray-300'>
                                 <FaXTwitter className='text-2xl' />
-                            </a>
-                            <a href='#' className='hover:text-gray-300'>
+                            </a> */}
+                            <a href='https://www.instagram.com/diademsfood/?utm_source=qr&r=nametag' className='hover:text-gray-300'>
                                 <FaInstagram className='text-2xl' />
                             </a>
                         </div>

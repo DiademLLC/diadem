@@ -49,7 +49,6 @@ const Reviews = () => {
         setIsLoading(true)
         try {
             const response = await axios.post('https://diadem-backend.vercel.app/api/review', formData, { withCredentials: true })
-            // const response = await axios.post('http://localhost:3000/api/review', formData, { withCredentials: true })
 
             if (response.data.success) {
                 toast.success('review submitted successfully')
@@ -63,8 +62,7 @@ const Reviews = () => {
                 })
             } 
         } catch (error) {
-            // setError('Review submission failed. Try again')
-            console.error('error:', error.response.data)
+            // console.error('error:', error.response.data)
             setError(error.response.data.message)
         } finally {
             setIsLoading(false)

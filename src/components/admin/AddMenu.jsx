@@ -51,7 +51,7 @@ function AddMenu() {
 
         try {
             const response = await axios.post('https://diadem-backend.vercel.app/admin/add-item', data, { withCredentials: true });
-            console.log(response.data);
+            // console.log(response.data);
             toast.success('uploaded item successfully')
 
             // Reset form to initial state after adding item

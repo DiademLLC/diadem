@@ -30,7 +30,7 @@ const HomeHero = () => {
             setCurrentSlide((prevSlide) =>
                 prevSlide === carousel.length - 1 ? 0 : prevSlide + 1
             );
-        }, 8000); // 5-second interval
+        }, 8000); // 8-second interval
         return () => clearInterval(interval); // Clear interval on unmount
     }, [carousel.length]);
 

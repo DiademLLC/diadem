@@ -29,7 +29,6 @@ const OrderCompletionPage = () => {
     }, []);
 
     if (!orderPlaced) return null;
-    // console.log('order placed on complete:', orderPlaced)
     const handleContinue = () => {
         navigate('/#menu')
     }

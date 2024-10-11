@@ -14,20 +14,17 @@ export const AuthProvider = ({ children }) => {
         setLoading(true)
         try {
             const { data } = await axios.get('https://diadem-backend.vercel.app/auth/status', { withCredentials: true });
-            // const { data } = await axios.get('http://localhost:3000/auth/status', { withCredentials: true });
 
-            // console.log(data)
+
             if (data.isAuthenticated) {
-                console.log('inside authenticated block')
                 setIsLoggedIn(true);
                 setUser(data.user);
             } else {
-                console.log('inside not authenticated block')
                 setIsLoggedIn(false);
                 setUser(null);
             }
         } catch (error) {
-            console.error('Session check error:', error);
+            // console.error('Session check error:', error);
             setIsLoggedIn(false);
             setUser(null);
         } finally {

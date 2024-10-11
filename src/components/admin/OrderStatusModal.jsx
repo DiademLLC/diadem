@@ -10,7 +10,6 @@ const OrderStatusModal = ({order, closeModal, fetchApi}) => {
     const handleStatusChange = (newStatus) => {
         setStatus(newStatus)
     }
-    // console.log(status)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +24,8 @@ const OrderStatusModal = ({order, closeModal, fetchApi}) => {
                 closeModal();
             }
         } catch (error) {
-            console.error('error:', error)
+            // console.error('error:', error)
+            toast.error('Error changing order status, please try again!')
         } finally {
             setIsLoading(false)
         }

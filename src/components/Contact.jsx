@@ -26,9 +26,7 @@ const Contact = () => {
         setIsLoading(true)
 
         try {
-            // Send form data to backend
             const response = await axios.post('https://diadem-backend.vercel.app/api/contact', formData);
-            // const response = await axios.post('http://localhost:3000/api/contact', formData);
 
             if (response.status === 200) {
                 toast.success('Your message has been sent successfully!');

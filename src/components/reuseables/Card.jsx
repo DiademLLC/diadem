@@ -3,30 +3,29 @@ import { ModalContext } from "../../context/ModalContext"
 import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 
-const Card = ({product, cardType}) => {
-    const {openModal} = useContext(ModalContext);
+const Card = ({ product, cardType }) => {
+    const { openModal } = useContext(ModalContext);
 
-    const handleOpenModal= () => {
+    const handleOpenModal = () => {
         openModal(product._id)
     }
-  return (
-    <div className='bg-white rounded-[10px]  flex-grow flex flex-col overflow-hidden shadow-lg'>
-        <div className="">
-            <img className="w-full h-52 object-cover" src={product.image} alt="" /> {/*adjust height for img card*/}
-        </div>
+    return (
+        <div className='bg-white rounded-[10px]  flex-grow flex flex-col overflow-hidden shadow-lg'>
+            <div className="">
+                <img className="w-full h-48 object-cover" src={product.image} alt="" /> {/*adjust height for img card*/}
+            </div>
 
-        <div className={`${cardType === 'menu' && 'bg-white'} p-3`}>
-            <h3 className={` text-2xl`}>{product.name}</h3>
+            <div className={`${cardType === 'menu' && 'bg-white'} p-3`}>
+                <h3 className={` text-2xl`}>{product.name}</h3>
 
-            <div className="flex items-center justify-between mt-3">
-                {/* <button onClick={handleOpenModal} className="bg-black/80 text-white px-2 py-1 capitalize rounded-md">add to cart</button> */}
-                <button onClick={handleOpenModal} className="bg-orange-600/80 w-6 h-6 text-white p-2 capitalize rounded-full flex justify-center items-center">
-                    <FaPlus className='' />
-                </button>
+                <div className="flex items-center justify-between mt-3">
+                    <button onClick={handleOpenModal} className="bg-orange-600/80 w-6 h-6 text-white p-2 capitalize rounded-full flex justify-center items-center">
+                        <FaPlus className='' />
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Card

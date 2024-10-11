@@ -22,7 +22,7 @@ const Modal = () => {
         const cartItem = cartItems.find(
             (item) => item.type === priceObject.name && item._id === modalContent._id
         );
-        // console.log('cartItem:', cartItems)
+
         if (!cartItem && change === 1) {
             // return console.log('does not exists')
             return addItemToCart(modalContent, 1, priceId);
@@ -69,6 +69,7 @@ const Modal = () => {
                             const cartItem = cartItems.find(item => item.type === price.name && item._id === modalContent._id);
 
                             const currentQuantity = cartItem ? cartItem.quantity : 0;
+                            console.log('price;', price)
 
                             return (
                                 <div key={index} className="flex justify-between">

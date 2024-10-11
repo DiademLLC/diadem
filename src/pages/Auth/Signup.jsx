@@ -32,7 +32,7 @@ const Signup = () => {
                 // toast.error('response.data.message');
             }
         } catch (error) {
-            console.error('error:', error)
+            // console.error('error:', error)
         } finally {
             setIsLoading(false)
         }

@@ -25,7 +25,6 @@ const Login = () => {
             const {data} = await axios.post('https://diadem-backend.vercel.app/auth/login', formData, {
                 withCredentials: true, 
             });
-            // console.log('data from backend:', data)
 
             if (data.success) {
                 setError('')
@@ -38,7 +37,7 @@ const Login = () => {
             }
         } catch (error) {
             setError('Invalid email or password')
-            console.error('error:', error)
+            // console.error('error:', error)
         } finally {
             setIsLoading(false)
         }

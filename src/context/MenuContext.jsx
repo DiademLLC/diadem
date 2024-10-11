@@ -13,14 +13,13 @@ export const MenuProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchMenuItems = async () => {
+            setLoading(true);
             try {
                 const response = await fetch('https://diadem-backend.vercel.app/api/menus');
-                // const response = await fetch('http://localhost:3000/api/menus');
                 if (!response.ok) {
                     throw new Error('Failed to fetch menu items');
                 }
                 const data = await response.json();
-                // console.log('data:', data)
                 setMenuItems(data);
             } catch (err) {
                 setError(err.message);
@@ -30,7 +29,6 @@ export const MenuProvider = ({ children }) => {
         };
 
         fetchMenuItems();
-        // console.log('menuItems:', menuItems)
     }, []);
 
     

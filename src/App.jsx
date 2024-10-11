@@ -97,7 +97,7 @@ function App() {
                   <ProtectedRoute>
                     <AdminRoutes />
                   </ProtectedRoute>
-                </AdminProvider>
+                </AdminProvider>             
               }
             />
           </Routes>

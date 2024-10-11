@@ -1,4 +1,3 @@
-import React from 'react'
 import AdminSidenav from '../../components/admin/AdminSidenav'
 
 const AdminHome = () => {

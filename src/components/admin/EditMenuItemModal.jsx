@@ -18,10 +18,8 @@ const EditMenuItemModal = ({ menuItem, closeModal, fetchApi }) => {
 
         const prices = priceOptions.map(option => {
             const foundPrice = menuItem.prices.find(p => p.name === option)
-            // console.log('foundPrice:', foundPrice)
             return {name: option, price: foundPrice ? foundPrice.price : ''};
         });
-        // console.log(' prices:', prices)
 
         return{
             ...menuItem,
@@ -37,7 +35,6 @@ const EditMenuItemModal = ({ menuItem, closeModal, fetchApi }) => {
         setIsLoading(true)
 
         const filledPrices = formData.prices.filter((priceOption) => priceOption.price);
-        // return console.log('filledPrices:', filledPrices)
 
         const data = new FormData();
         data.append('name', formData.name);
@@ -56,14 +53,14 @@ const EditMenuItemModal = ({ menuItem, closeModal, fetchApi }) => {
         try {        
             const response = await axios.put(`https://diadem-backend.vercel.app/admin/edit-item/${formData._id}`, data, {withCredentials: true});
             
-            // console.log(response.data);
             if(response.data.success){
                 await fetchApi();
                 toast.success('Item edited successfully');
                 closeModal();
             }
         } catch (error) {
-            console.error(err);
+            toast.error('Error saving edited item, please try again!')
+            // console.error(err);
         } finally {
             setIsLoading(false)
         }

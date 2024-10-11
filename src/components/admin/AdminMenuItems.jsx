@@ -11,7 +11,6 @@ const AdminMenuItems = () => {
     const [modalContent, setModalContent] = useState(null)
 
     const handleDelete = async (id) => {
-        // console.log('clicked')
         setIsLoading(true);
         try {
             const confirmed = window.confirm('Are you sure you want to delete item')
@@ -25,11 +24,10 @@ const AdminMenuItems = () => {
             if (response.data.success) {
                 toast.success(response.data.message)
                 await fetchApi()
-            } else {
-                toast.error('here')
-            }
+            } 
         } catch (error) {
-            console.error('error:', error)
+            toast.error('Could not delete item, try again!')
+            // console.error('error:', error)
         } finally {
             setIsLoading(false);
         }

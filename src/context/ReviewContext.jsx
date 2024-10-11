@@ -8,13 +8,14 @@ export const useReviewContext = () => {
 
 export const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchReviews = async () => {
+      setLoading(true);
         try {
             const response = await fetch('https://diadem-backend.vercel.app/api/review');
-            // const response = await fetch('http://localhost:3000/api/review');
             if (!response.ok) {
                 throw new Error('Failed to fetch reviews');
             }

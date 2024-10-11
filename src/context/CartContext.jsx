@@ -7,7 +7,6 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState(false)
     const [cartItems, setCartItems] = useState(() => {
         const savedCartItems = localStorage.getItem('cartItems');
-        // console.log('savedCartItems:', savedCartItems)
         try{
             return savedCartItems ? JSON.parse(savedCartItems) : []
         } catch (error) {
@@ -35,12 +34,10 @@ export const CartProvider = ({children}) => {
 
     //add to cart 
     const addItemToCart = (product, quantity, priceId) => {
-        // return console.log('product:', product)
         setIsLoading(true);
 
         // Find the existing item in the cart
         const existingItem = cartItems.filter(item => item._id === product._id);
-    
 
         if (product.name === 'zobo') {
             const zoboType = existingItem.find(item => item._id === product._id);

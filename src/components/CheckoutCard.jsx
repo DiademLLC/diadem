@@ -59,9 +59,7 @@ const CheckoutCard = () => {
                 cartItems,       
             };
             
-            const response = await axios.post('https://diadem-backend.vercel.app/api/order', orderData)
-            // const response = await axios.post('http://localhost:3000/api/order', orderData)
-            
+            const response = await axios.post('https://diadem-backend.vercel.app/api/order', orderData)           
 
             if (response.data.success) {
                 setOrderPlaced(true)
@@ -74,7 +72,7 @@ const CheckoutCard = () => {
             }
         } catch (error) {
             toast.error('Error making order. Try again')
-            console.error('Error:', error)
+            // console.error('Error:', error)
         } finally {
             setIsLoading(false)
         }
