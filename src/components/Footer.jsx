@@ -18,8 +18,14 @@ const Footer = () => {
 
                         <ul className='space-y-2'>
                             <li className='font-semibold text-xl'>Opening Hours</li>
-                            <li>Monday-Sunday</li>
-                            <li>8:00 AM - 9:00 PM</li>
+                            <div>
+                                <li>Monday-Saturday</li>
+                                <li>8:00 AM - 9:00 PM</li>
+                            </div>
+                            <div>
+                                <li>Sunday: Closed</li>
+                                <li className='text-sm'>Holiday hours might differ.</li>
+                            </div>
                         </ul>
                     </div>
 
@@ -43,13 +49,13 @@ const Footer = () => {
                     <div className='flex flex-col items-start max-w-44 w-full'>
                         <h3 className='font-semibold mb-2 text-xl'>Follow Us</h3>
                         <div className='flex space-x-4'>
-                            <a href='https://www.facebook.com/Diademsfood?mibextid=ZbWKwL' className='hover:text-gray-300'>
+                            <a href='https://www.facebook.com/Diademsfood?mibextid=ZbWKwL' className='hover:text-blue-400'>
                                 <FaFacebook className='text-2xl' />
                             </a>
                             {/* <a href='#' className='hover:text-gray-300'>
                                 <FaXTwitter className='text-2xl' />
                             </a> */}
-                            <a href='https://www.instagram.com/diademsfood/?utm_source=qr&r=nametag' className='hover:text-gray-300'>
+                            <a href='https://www.instagram.com/diademsfood/?utm_source=qr&r=nametag' className='hover:text-purple-600'>
                                 <FaInstagram className='text-2xl' />
                             </a>
                         </div>
