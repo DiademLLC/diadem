@@ -43,7 +43,7 @@ export const AdminProvider = ({ children }) => {
 
     useEffect(() => {
         if(user) {
-            // console.log('user on admin context fetch api:', user)
+            console.log('user on admin context fetch api:', user)
             fetchApi();
         }     
     }, [user]);
