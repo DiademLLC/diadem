@@ -31,7 +31,11 @@ const Login = () => {
                 toast.success('login successful')
                 setIsLoggedIn(true)
                 setUser(data.user)
-                navigate('/admin')
+
+                // Wait for a brief moment to ensure session/cookies are set
+                setTimeout(() => {
+                    navigate('/admin');
+                }, 1000); // Delay for 500ms before navigation
             } else {
                 setError('Invalid email or password')
             }

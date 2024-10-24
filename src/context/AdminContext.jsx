@@ -9,15 +9,15 @@ export const useAdmin = () => {
 };
 
 export const AdminProvider = ({ children }) => {
-    const { user } = useAuth()
+    const { user, loading } = useAuth()
     const [menuItems, setMenuItems] = useState([]);
     const [orders, setOrders] = useState([]);
     // const [contacts, setContacts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const fetchApi = async () => {
-        setLoading(true);
+        // setLoading(true);
 
         try {            
             //call backend apis (contactsRes)
@@ -36,17 +36,15 @@ export const AdminProvider = ({ children }) => {
         } catch (error) {
             setError('Failed to fetch data')
             // console.error('Error fetching data:', error);
-        } finally {
-            setLoading(false);
-        }
+        } 
     };
 
     useEffect(() => {
-        if(user) {
+        if(!loading && user) {
             console.log('user on admin context fetch api:', user)
             fetchApi();
         }     
-    }, [user]);
+    }, [user, loading]);
 
 
 
