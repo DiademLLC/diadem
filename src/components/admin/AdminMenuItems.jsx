@@ -12,6 +12,7 @@ const AdminMenuItems = () => {
 
     const handleDelete = async (id) => {
         setIsLoading(true);
+        const token = localStorage.getItem('authToken');
         try {
             const confirmed = window.confirm('Are you sure you want to delete item')
 
@@ -19,7 +20,7 @@ const AdminMenuItems = () => {
                 return null;
             }
 
-            const response = await axios.delete(`https://diadem-backend.vercel.app/admin/delete-item/${id}`, {withCredentials: true})
+            const response = await axios.delete(`https://diadem-backend.vercel.app/admin/delete-item/${id}`, {headers: { Authorization: `Bearer ${token}` }})
 
             if (response.data.success) {
                 toast.success(response.data.message)
@@ -40,7 +41,7 @@ const AdminMenuItems = () => {
 
     return (
         <div className='relative'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
+            <div className='p-4 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                 {menuItems.map((item, index) => {
                     return (
                         <div key={index} className=' bg-black/70 text-white rounded-2xl shadow-xl overflow-hidden'>

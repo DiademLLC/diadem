@@ -59,7 +59,7 @@ const AdminSidenav = () => {
     <>
       {/* Hamburger icon to toggle side nav in mobile view */}
       <div className="lg:hidden p-4 fixed top-0 left-0 z-50">
-        <button onClick={toggleNav} className={`${isOpen ? 'text-white' : 'text-black'}`}>
+        <button onClick={toggleNav} className={`${isOpen ? 'text-white p-1' : 'text-black bg-gray-400 p-1'}`}>
           {/* Hamburger Icon */}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />

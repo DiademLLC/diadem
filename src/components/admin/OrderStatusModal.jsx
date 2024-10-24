@@ -14,9 +14,10 @@ const OrderStatusModal = ({order, closeModal, fetchApi}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true)
+        const token = localStorage.getItem('authToken');
 
         try {
-            const response = await axios.put(`https://diadem-backend.vercel.app/admin/order/${order._id}/status`, {status}, {withCredentials: true});
+            const response = await axios.put(`https://diadem-backend.vercel.app/admin/order/${order._id}/status`, {status}, {headers: { Authorization: `Bearer ${token}` }});
 
             if (response.data.success) {
                 await fetchApi()

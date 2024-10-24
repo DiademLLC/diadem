@@ -50,8 +50,10 @@ const EditMenuItemModal = ({ menuItem, closeModal, fetchApi }) => {
             data.append('existingImage', formData.existingImage);
         }
 
+        const token = localStorage.getItem('authToken');
+
         try {        
-            const response = await axios.put(`https://diadem-backend.vercel.app/admin/edit-item/${formData._id}`, data, {withCredentials: true});
+            const response = await axios.put(`https://diadem-backend.vercel.app/admin/edit-item/${formData._id}`, data, {headers: { Authorization: `Bearer ${token}` }});
             
             if(response.data.success){
                 await fetchApi();

@@ -49,8 +49,10 @@ function AddMenu() {
         data.append('prices', JSON.stringify(filledPrices)); // Add prices as a stringified array
         data.append('image', formData.image); // Append the image file
 
+        const token = localStorage.getItem('authToken');
+
         try {
-            const response = await axios.post('https://diadem-backend.vercel.app/admin/add-item', data, { withCredentials: true });
+            const response = await axios.post('https://diadem-backend.vercel.app/admin/add-item', data, { headers: { Authorization: `Bearer ${token}` } });
             // console.log(response.data);
             toast.success('uploaded item successfully')
 

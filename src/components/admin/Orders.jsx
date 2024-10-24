@@ -26,8 +26,9 @@ const GetOrders = () => {
     const handleSearch = async (e) => {
         e.preventDefault()
         setIsLoading(true)
+        const token = localStorage.getItem('authToken');
         try {
-            const { data } = await axios.post('https://diadem-backend.vercel.app/admin/search-order', { orderRef }, { withCredentials: true })
+            const { data } = await axios.post('https://diadem-backend.vercel.app/admin/search-order', { orderRef }, { headers: { Authorization: `Bearer ${token}` } })
             if (data.success) {
                 // console.log(data)
                 setSearchedResult(data.order)
