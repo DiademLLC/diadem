@@ -40,7 +40,7 @@ const AdminMenuItems = () => {
     }
 
     return (
-        <div className='relative'>
+        <div className='relative my-8'>
             <div className='p-4 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                 {menuItems.map((item, index) => {
                     return (

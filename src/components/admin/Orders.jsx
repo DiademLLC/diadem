@@ -45,7 +45,7 @@ const GetOrders = () => {
 
     return (
         <div className='p-4'>
-            <div className='mb-10'>
+            <div className='my-8'>
                 <form className='flex items-center gap-3' onSubmit={handleSearch}>
                     <div className='flex gap-3 items-center'>
                         <label htmlFor="search">Search for order using orderRef:</label>
