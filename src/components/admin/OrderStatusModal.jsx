@@ -51,7 +51,7 @@ const OrderStatusModal = ({order, closeModal, fetchApi}) => {
                                     <select
                                         value={status}
                                         onChange={(e) => handleStatusChange(e.target.value)}
-                                        className='border p-1 rounded-lg'
+                                        className='border p-1 rounded-lg bg-white text-black'
                                     >
                                         <option value="pending">Pending</option>
                                         <option value="cancelled">Cancelled</option>

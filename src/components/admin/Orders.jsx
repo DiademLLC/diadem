@@ -44,7 +44,7 @@ const GetOrders = () => {
     }
 
     return (
-        <div>
+        <div className='p-4'>
             <div className='mb-10'>
                 <form className='flex items-center gap-3' onSubmit={handleSearch}>
                     <div className='flex gap-3 items-center'>
@@ -52,7 +52,7 @@ const GetOrders = () => {
                         <input
                             type="text"
                             placeholder='input orderRef '
-                            className='p-2 border max-w-[50%] rounded-md'
+                            className='p-2 border max-w-[50%] rounded-md bg-white text-black'
                             id='orderRef'
                             name='orderRef'
                             value={orderRef}
