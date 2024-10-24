@@ -22,20 +22,20 @@ const Login = () => {
         setIsLoading(true);
 
         try { 
-            const {data} = await axios.post('https://diadem-backend.vercel.app/auth/login', formData, {
-                withCredentials: true, 
-            });
+            const {data} = await axios.post('https://diadem-backend.vercel.app/auth/login', formData);
 
             if (data.success) {
                 setError('')
                 toast.success('login successful')
+                // Store the JWT in localStorage or sessionStorage
+                localStorage.setItem('authToken', data.token);
                 setIsLoggedIn(true)
                 setUser(data.user)
 
                 // Wait for a brief moment to ensure session/cookies are set
                 setTimeout(() => {
                     navigate('/admin');
-                }, 1000); // Delay for 500ms before navigation
+                }, 500); // Delay for 500ms before navigation
             } else {
                 setError('Invalid email or password')
             }

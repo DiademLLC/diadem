@@ -13,11 +13,21 @@ export const AuthProvider = ({ children }) => {
     const checkSession = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get('https://diadem-backend.vercel.app/auth/status', { withCredentials: true });
-            console.log('data from auth status:', data)
+            const token = localStorage.getItem('authToken');
+
+            if (!token) {
+                setIsLoggedIn(false);
+                setUser(null);
+                setLoading(false);
+                return;
+            }
+
+            // Call the backend to verify the token
+            const { data } = await axios.get('https://diadem-backend.vercel.app/auth/status', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
             if (data.isAuthenticated) {
-                console.log('is authenticated')
                 setIsLoggedIn(true);
                 setUser(data.user);
             } else {

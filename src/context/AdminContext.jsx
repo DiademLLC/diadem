@@ -18,15 +18,16 @@ export const AdminProvider = ({ children }) => {
 
     const fetchApi = async () => {
         // setLoading(true);
+        const token = localStorage.getItem('authToken');
 
         try {            
             //call backend apis (contactsRes)
             const [menuItemsRes, ordersRes] = await Promise.all([
                 axios.get('https://diadem-backend.vercel.app/admin/menu', {
-                    withCredentials: true, 
+                    headers: { Authorization: `Bearer ${token}` }
                 }),
                 axios.get('https://diadem-backend.vercel.app/admin/all-orders', {
-                    withCredentials: true, 
+                    headers: { Authorization: `Bearer ${token}` }
                 }),
             ]);
 

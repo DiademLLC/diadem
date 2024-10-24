@@ -23,20 +23,32 @@ const AdminSidenav = () => {
   const navigate = useNavigate()
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.post('https://diadem-backend.vercel.app/auth/logout', {}, {
-        withCredentials: true,
-      });
-      if (response.data.success) {
-        toast.success('Logout successful')
-        setIsLoggedIn(false)
-        setUser(null)
-        navigate('/diadem/login')
-      }
-    } catch (error) {
-      toast.error('Error logging out, please try again!')
-      // console.error('error:', error)
-    }
+    // const token = localStorage.getItem('authToken');
+    // try {
+    //   const response = await axios.post('https://diadem-backend.vercel.app/auth/logout', {}, {
+    //     headers: { Authorization: `Bearer ${token}` }
+    //   });
+    //   if (response.data.success) {
+    //     toast.success('Logout successful')
+    //     setIsLoggedIn(false)
+    //     setUser(null)
+    //     navigate('/diadem/login')
+    //   }
+    // } catch (error) {
+    //   toast.error('Error logging out, please try again!')
+    
+    // }
+
+      // Remove the token from localStorage
+      localStorage.removeItem('authToken');
+  
+      // Optionally clear any user state
+      setIsLoggedIn(false);
+      setUser(null);
+  
+      // Navigate back to login or homepage
+      navigate('/diadem/login');
+
   }
 
   const toggleNav = () => {
