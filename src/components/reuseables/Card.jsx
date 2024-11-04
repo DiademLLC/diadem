@@ -12,13 +12,13 @@ const Card = ({ product, cardType }) => {
     return (
         <div className='bg-white rounded-[10px]  flex-grow flex flex-col overflow-hidden shadow-lg'>
             <div className="">
-                <img className="w-full h-48 object-cover" src={product.image} alt="" /> {/*adjust height for img card*/}
+                <img className="w-full h-44 object-cover" src={product.image} alt="" /> {/*adjust height for img card*/}
             </div>
 
             <div className={`${cardType === 'menu' && 'bg-white'} p-3`}>
-                <h3 className={` text-2xl`}>{product.name}</h3>
+                <h3 className={`text-sm md:text-2xl capitalize`}>{product.name}</h3>
 
-                <div className="flex items-center justify-between mt-3">
+                <div className="flex items-center justify-between mt-2">
                     <button onClick={handleOpenModal} className="bg-orange-600/80 w-6 h-6 text-white p-2 capitalize rounded-full flex justify-center items-center">
                         <FaPlus className='' />
                     </button>
