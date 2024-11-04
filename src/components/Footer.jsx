@@ -20,7 +20,7 @@ const Footer = () => {
                             <li className='font-semibold text-xl'>Opening Hours</li>
                             <div>
                                 <li>Monday-Saturday</li>
-                                <li>8:00 AM - 9:00 PM</li>
+                                <li>12:00 PM - 8:00 PM</li>
                             </div>
                             <div>
                                 <li>Sunday: Closed</li>
@@ -55,7 +55,7 @@ const Footer = () => {
                             {/* <a href='#' className='hover:text-gray-300'>
                                 <FaXTwitter className='text-2xl' />
                             </a> */}
-                            <a href='https://www.instagram.com/diademsfood/?utm_source=qr&r=nametag' className='hover:text-purple-600'>
+                            <a href='https://www.instagram.com/diademsfoods' className='hover:text-purple-600'>
                                 <FaInstagram className='text-2xl' />
                             </a>
                         </div>

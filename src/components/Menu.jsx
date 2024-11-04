@@ -9,7 +9,9 @@ const categories = [
     { name: 'snack', id: 4 },
     { name: 'swallow', id: 5 },
     { name: 'drink', id: 6 },
-    { name: 'others', id: 7 },
+    { name: 'protein', id: 7 },
+    { name: 'menus', id: 8 },
+    { name: 'others', id: 9 },
 ]
 
 

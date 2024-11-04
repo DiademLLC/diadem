@@ -99,6 +99,8 @@ function AddMenu() {
                             <option value="swallow">Swallow</option>
                             <option value="snack">Snack</option>
                             <option value="drink">Drink</option>
+                            <option value="protein">Protein menu</option>
+                            <option value="menus">Menus</option>
                             <option value="others">Others</option>
                         </select>
                     </div>

@@ -11,23 +11,24 @@ import Reviews from "../components/Reviews";
 const Home = () => {
   const { hash } = useLocation();
 
-  useEffect(()=> {
-    if(hash) {
+
+  useEffect(() => {
+    if (hash) {
       const element = document.getElementById(hash.replace('#', ''));
-      if(element) {
+      if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
   })
-  
+
   return (
-    <div className="relative">        
-        <HomeHero />
-        {/* <Popular /> */}
-        <Blocks />
-        <Menu />
-        <Zobo />     
-        <Reviews />   
+    <div className="relative">
+      <HomeHero />
+      {/* <Popular /> */}
+      <Blocks />
+      <Menu />
+      <Zobo />
+      <Reviews />
     </div>
   )
 }
