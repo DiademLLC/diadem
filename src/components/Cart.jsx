@@ -35,7 +35,7 @@ const Cart = () => {
 
                                             <div className='relative w-[60%] space-y-1'>
                                                 <h3 className='uppercase'>{item.name}</h3>
-                                                <h3 className='capitalize'>Type: {item.type}</h3>
+                                                <h3 className='capitalize'>Type: {item.type === 'Unit' ? <span>{item.type}(12 pcs)</span> : <span>{item.type}</span>}</h3>
                                                 <h3>${item.price * item.quantity}</h3>
 
                                                 <div className="flex gap-3 items-center">

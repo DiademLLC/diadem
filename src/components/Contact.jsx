@@ -48,7 +48,7 @@ const Contact = () => {
         <section>
             <div className='flex flex-col items-center justify-center pt-20 pb-10 lg:py-32'>
                 <div className='mb-4 lg:mb-16 text-center'>
-                    <h2 className='text-2xl lg:text-4xl font-semibold '>How Can We Assist?</h2>
+                    <h2 className='text-2xl lg:text-4xl font-semibold '>How Can We Serve You?</h2>
                     <p className='text-sm md:text-lg'>Contact us today for any inquiries, support, or feedback.</p>
                 </div>
 

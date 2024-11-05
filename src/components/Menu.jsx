@@ -10,8 +10,7 @@ const categories = [
     { name: 'swallow', id: 5 },
     { name: 'drink', id: 6 },
     { name: 'protein', id: 7 },
-    { name: 'menus', id: 8 },
-    { name: 'others', id: 9 },
+    { name: 'others', id: 8 },
 ]
 
 

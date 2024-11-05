@@ -10,7 +10,7 @@ const About = () => {
                   Welcome to DiademFoods
                 </p>
                 <p className='text-base md:text-xl font-medium'>
-                  A Vibrant Nigerian food outlet located in Chicago, IL that was established out of passion for fresh nutritous and delicious foods. Specializing in a unique blend of natural flavors, our menu includes authentic Nigerisn dishes and a variety of natural, healthy drinks.
+                  A Vibrant Nigerian food outlet located in Chicago, IL that was established out of passion for fresh nutritous and delicious foods. Specializing in a unique blend of natural flavors, our menu includes authentic Nigerian dishes and a variety of natural, healthy drinks.
                 </p>
                 <p className='text-base md:text-xl font-medium'>
                   We offer catering services for events and special occasions, also accept online orders and delivery. <br />

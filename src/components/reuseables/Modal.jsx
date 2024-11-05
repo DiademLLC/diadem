@@ -69,12 +69,12 @@ const Modal = () => {
                             const cartItem = cartItems.find(item => item.type === price.name && item._id === modalContent._id);
 
                             const currentQuantity = cartItem ? cartItem.quantity : 0;
-                            console.log('price;', price)
+                            // console.log('price;', price)
 
                             return (
                                 <div key={index} className="flex justify-between">
                                     <div>
-                                        <h3>{price.name}</h3>
+                                        <h3>{price.name === 'Unit' ? <span>{price.name}(12 pcs)</span> : <span>{price.name}</span>}</h3>
                                         <p>${price.price}</p>
                                     </div>
 

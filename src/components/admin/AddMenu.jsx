@@ -6,6 +6,7 @@ import { useAdmin } from '../../context/AdminContext';
 function AddMenu() {
     const { fetchApi } = useAdmin()
     const priceOptions = [
+        { name: 'Bottle', price: '' },
         { name: 'Unit', price: '' },
         { name: 'Plate', price: '' },
         { name: 'Small Tray', price: '' },
@@ -100,7 +101,6 @@ function AddMenu() {
                             <option value="snack">Snack</option>
                             <option value="drink">Drink</option>
                             <option value="protein">Protein menu</option>
-                            <option value="menus">Menus</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
