@@ -7,6 +7,7 @@ function AddMenu() {
     const { fetchApi } = useAdmin()
     const priceOptions = [
         { name: 'Bottle', price: '' },
+        { name: 'Piece', price: '' },
         { name: 'Unit', price: '' },
         { name: 'Plate', price: '' },
         { name: 'Small Tray', price: '' },
