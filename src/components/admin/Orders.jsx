@@ -13,6 +13,10 @@ const GetOrders = () => {
     const [searchedResult, setSearchedResult] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
+    const sortedOrders = [...orders].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    )
+
     const handleModalContent = (item) => {
         setModalContent(item)
         setIsModalOpen(true)
@@ -137,7 +141,7 @@ const GetOrders = () => {
                 </div>
                 :
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5 w-full'>
-                    {orders.map((order, index) => {
+                    {sortedOrders.map((order, index) => {
                         return (
                             <div key={index} className='bg-green-900 text-white rounded-xl shadow-xl p-4 '>
                                 <div className='space-y-2'>
