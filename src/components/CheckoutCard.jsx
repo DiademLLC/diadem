@@ -59,7 +59,7 @@ const CheckoutCard = () => {
                 cartItems,       
             };
             
-            const response = await axios.post('https://diadem-backend-1852iuqvk-diadem-llcs-projects.vercel.app/api/order', orderData)           
+            const response = await axios.post('https://diadem-backend.vercel.app/api/order', orderData)           
 
             if (response.data.success) {
                 setOrderPlaced(true)
